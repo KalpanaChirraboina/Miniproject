@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makhanlal Chaturvedi - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Makhanlal Chaturvedi, a renowned Hindi poet and freedom fighter from Madhya Pradesh, known for his contributions to Hindi literature and Indian independence movement.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button, .read-aloud-button, .stop-button, .resume-button, .restart-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover, .read-aloud-button:hover, .stop-button:hover, .resume-button:hover, .restart-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: none; }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+        .button-group button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Makhanlal Chaturvedi</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <aside class="w-full md:w-1/3 sidebar p-6" aria-labelledby="profile-heading">
+                <img src="MP_Makhanlal_Chaturvedi.jpg" alt="Portrait of Makhanlal Chaturvedi" class="profile-img w-full mb-6">
+                <h2 id="profile-heading" class="font-semibold text-gray-800">Makhanlal Chaturvedi</h2>
+                <p class="text-gray-600 mb-4 subtitle">Hindi Poet and Freedom Fighter</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> April 4, 1889, Babai, Madhya Pradesh</p>
+                    <p><strong>State:</strong> Madhya Pradesh</p>
+                    <p><strong>Language:</strong> Hindi</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Self-educated</p>
+                    <p><strong>Occupation:</strong> Poet, Journalist, Freedom Fighter</p>
+                    <p><strong>Notable Role:</strong> Editor of <em>Prabha</em> and <em>Karmaveer</em></p>
+                </div>
+            </aside>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <main class="w-full md:w-2/3 content-section" aria-labelledby="content-heading">
+                <h2 id="content-heading" class="sr-only">Makhanlal Chaturvedi Profile Details</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Makhanlal Chaturvedi (1889–1968) was a distinguished Hindi poet, journalist, and freedom fighter, celebrated for his patriotic poetry that inspired India’s independence movement. Known as ‘Panditji,’ his works, such as <em>Him Kirtini</em> and <em>Pushp Ki Abhilasha</em>, blend nationalism, nature, and spirituality. A key figure in the Chhayavaad movement, his contributions to Hindi literature and journalism earned him the Sahitya Akademi Award, leaving a lasting legacy.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <section class="mb-6" aria-labelledby="books-heading">
+                    <h3 id="books-heading" class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.exoticindiaart.com/book/details/him-tarangini-sahitya-akademi-s-award-winning-hindi-poems-translated-into-rajasthani-nzx565/?srsltid=AfmBOoqQepppP66MBVuWD3kLR8wsvVesnhrBsLm82hj5S3eOEq64gHpP" class="text-blue-600 hover:underline" rel="noopener noreferrer">Him Tarangini</a> (1922): Poems reflecting nationalism and nature’s beauty.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/YUGCHARAN-DINKAR-SAVITRI-SINHA/dp/8194047072" class="text-blue-600 hover:underline" rel="noopener noreferrer">Yug Charan</a> (1940): A work blending patriotism and social themes.</li>
+                            <li class="book-link"><a href="https://lucknowdigitallibrary.com/publications/sahitya-devta-by-chaturvedi-makhanlal" class="text-blue-600 hover:underline" rel="noopener noreferrer">Sahitya Devta</a> (1950): Essays on literature and culture.</li>
+                        </ul>
+                        <p class="text-sm text-gray-500">Note: Links to these works are unavailable due to their historical nature; they may be found in regional libraries or archives.</p>
+                    </div>
+                </section>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="early-life-heading" onclick="toggleContent('early-life')" role="button" aria-expanded="false" aria-controls="early-life">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content" aria-labelledby="early-life-heading">
+                            Makhanlal Chaturvedi was born on April 4, 1889, in Babai, Madhya Pradesh, into a modest family. Largely self-educated, he developed a deep love for Hindi literature and journalism early on. His exposure to India’s socio-political struggles shaped his patriotic fervor, leading him to participate actively in the freedom movement while honing his poetic voice.
+                        </div>
+                    </section>
+                    <!-- Literary Career -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-career-heading" onclick="toggleContent('literary-career')" role="button" aria-expanded="false" aria-controls="literary-career">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content" aria-labelledby="literary-career-heading">
+                            Makhanlal Chaturvedi’s literary career flourished during the Chhayavaad movement, where his poetry, including <em>Him Tarangini</em> and <em>Him Kirtini</em>, captured the essence of nationalism and nature. His iconic poem <em>Pushp Ki Abhilasha</em> became a symbol of selfless patriotism. As a journalist, he edited <em>Prabha</em> and <em>Karmaveer</em>, using his pen to inspire India’s freedom struggle.
+                        </div>
+                    </section>
+                    <!-- Literary Contributions -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-contributions-heading" onclick="toggleContent('literary-contributions')" role="button" aria-expanded="false" aria-controls="literary-contributions">Literary Contributions</h3>
+                        <div id="literary-contributions" class="toggle-content" aria-labelledby="literary-contributions-heading">
+                            Makhanlal Chaturvedi enriched Hindi literature with his lyrical and patriotic poetry, significantly contributing to the Chhayavaad movement. His works inspired generations during India’s independence struggle, blending themes of freedom, nature, and spirituality. His essays in <em>Sahitya Devta</em> offered insights into Hindi literature, solidifying his role as a literary and cultural icon.
+                        </div>
+                    </section>
+                    <!-- Selected Works -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="selected-works-heading" onclick="toggleContent('selected-works')" role="button" aria-expanded="false" aria-controls="selected-works">Selected Works</h3>
+                        <div id="selected-works" class="toggle-content" aria-labelledby="selected-works-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Him Tarangini</em>: Poems celebrating nationalism and nature.</li>
+                                <li><em>Him Kirtini</em>: A collection of patriotic and spiritual verses.</li>
+                                <li><em>Yug Charan</em>: Poetry reflecting social and patriotic themes.</li>
+                                <li><em>Sahitya Devta</em>: Essays on Hindi literature and culture.</li>
+                                <li><em>Pushp Ki Abhilasha</em>: An iconic poem symbolizing selfless patriotism.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Major Achievements -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="achievements-heading" onclick="toggleContent('achievements')" role="button" aria-expanded="false" aria-controls="achievements">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content" aria-labelledby="achievements-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award in 1955 for <em>Him Tarangini</em>.</li>
+                                <li>Honored with the Padma Bhushan in 1963 for literary contributions.</li>
+                                <li>Played a pivotal role in India’s freedom movement through poetry and journalism.</li>
+                                <li>Contributed to the Chhayavaad movement, shaping modern Hindi poetry.</li>
+                                <li>Inspired generations with his iconic poem <em>Pushp Ki Abhilasha</em>.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Legacy and Honors -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="legacy-heading" onclick="toggleContent('legacy')" role="button" aria-expanded="false" aria-controls="legacy">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content" aria-labelledby="legacy-heading">
+                            Makhanlal Chaturvedi’s legacy endures through his patriotic poetry and contributions to Hindi literature. His works remain integral to India’s literary and cultural heritage, inspiring patriotism and literary excellence. The Makhanlal Chaturvedi National University of Journalism in Bhopal is named in his honor, reflecting his impact on journalism and literature.
+                        </div>
+                    </section>
+                    <!-- Famous Quotes -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="quotes-heading" onclick="toggleContent('quotes')" role="button" aria-expanded="false" aria-controls="quotes">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content" aria-labelledby="quotes-heading">
+                            <div class="quote">“I wish not for the throne, but to lie at the feet of my motherland’s freedom fighters.”</div>
+                            <div class="quote">“Poetry is the heartbeat of a nation’s soul.”</div>
+                            <div class="quote">“In every flower blooms the dream of a free India.”</div>
+                        </div>
+                    </section>
+                    <!-- Timeline of Important Events -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="timeline-heading" onclick="toggleContent('timeline')" role="button" aria-expanded="false" aria-controls="timeline">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content" aria-labelledby="timeline-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1889: Born in Babai, Madhya Pradesh.</li>
+                                <li>1922: Published <em>Him Tarangini</em>, a significant poetry collection.</li>
+                                <li>1930: Released <em>Him Kirtini</em>, inspiring the freedom movement.</li>
+                                <li>1940: Published <em>Yug Charan</em>, blending patriotic themes.</li>
+                                <li>1950: Released <em>Sahitya Devta</em>, essays on literature.</li>
+                                <li>1955: Awarded the Sahitya Akademi Award for <em>Him Tarangini</em>.</li>
+                                <li>1968: Passed away, leaving a lasting legacy in Hindi literature.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Personal Life and Family -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="personal-heading" onclick="toggleContent('personal')" role="button" aria-expanded="false" aria-controls="personal">Personal Life and Family</h3>
+                        <div id="personal" class="toggle-content" aria-labelledby="personal-heading">
+                            Makhanlal Chaturvedi led a life dedicated to poetry, journalism, and India’s freedom struggle. Despite financial hardships, he remained committed to his ideals, often facing imprisonment for his activism. A private individual, he drew inspiration from his love for his country and nature, supported by his family in his literary and patriotic endeavors.
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- Button Section -->
+        <div class="text-center mt-8 button-group">
+            <button class="read-aloud-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="readAloud()">Read Aloud</button>
+            <button class="stop-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="stopReading()" disabled>Stop</button>
+            <button class="resume-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="resumeReading()" disabled>Resume</button>
+            <button class="restart-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="restartReading()" disabled>Restart</button>
+            <a href="hindi-poets.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Hindi Poets</a>
+        </div>
+    </div>
+    <script>
+        // Toggle content visibility
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const heading = document.querySelector(`[aria-controls="${sectionId}"]`);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+                document.querySelector(`[aria-controls="${el.id}"]`).setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Text-to-speech functionality
+        let utterance = null;
+        let isPaused = false;
+
+        function readAloud() {
+            if (utterance && !isPaused) {
+                window.speechSynthesis.cancel();
+            }
+            const content = document.querySelector('main').innerText;
+            utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'en-US';
+            utterance.rate = 1;
+            utterance.onend = () => {
+                resetButtons();
+            };
+            window.speechSynthesis.speak(utterance);
+            updateButtonStates(true);
+        }
+
+        function stopReading() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                updateButtonStates(true, true);
+            }
+        }
+
+        function resumeReading() {
+            if (utterance && isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                updateButtonStates(true);
+            }
+        }
+
+        function restartReading() {
+            window.speechSynthesis.cancel();
+            isPaused = false;
+            readAloud();
+        }
+
+        function updateButtonStates(isReading, isPaused = false) {
+            const readButton = document.querySelector('.read-aloud-button');
+            const stopButton = document.querySelector('.stop-button');
+            const resumeButton = document.querySelector('.resume-button');
+            const restartButton = document.querySelector('.restart-button');
+            readButton.disabled = isReading && !isPaused;
+            stopButton.disabled = !isReading || isPaused;
+            resumeButton.disabled = !isPaused;
+            restartButton.disabled = !isReading;
+        }
+
+        function resetButtons() {
+            isPaused = false;
+            utterance = null;
+            updateButtonStates(false);
+        }
+
+        // Stop speech on page unload or refresh
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            resetButtons();
+        });
+    </script>
+</body>
+</html>

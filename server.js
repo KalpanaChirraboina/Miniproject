@@ -20,6 +20,7 @@ app.use(express.json());
 // MongoDB setup
 const uri = 'mongodb+srv://ChirraboinaKalpana:Ammulu%4067@cluster0.15lp22v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 console.log("👉 MONGODB_URI:", uri);
+
 const client = new MongoClient(uri);
 let poetsCollection;
 let poetsCornerCollection;
@@ -33,19 +34,20 @@ client.connect()
   })
   .catch(err => console.error("❌ MongoDB connection failed:", err));
 
-// Serve static files
+// Serve static files in the root folder
 app.use(express.static(__dirname));
 
-// ✅ HOME
+// ✅ Home page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "home_page.html"));
 });
 
-// ✅ SEARCH
+// ✅ Search page
 app.get("/search", (req, res) => {
   res.sendFile(path.join(__dirname, "search.html"));
 });
 
+// ✅ Search JSON
 app.get("/search-data", (req, res) => {
   const query = (req.query.q || "").toLowerCase();
   try {
@@ -60,7 +62,7 @@ app.get("/search-data", (req, res) => {
   }
 });
 
-// ✅ INDIVIDUAL POET PAGE
+// ✅ Individual poet page
 app.get("/poet/:slug", async (req, res) => {
   try {
     if (!poetsCollection) {
@@ -77,7 +79,7 @@ app.get("/poet/:slug", async (req, res) => {
   }
 });
 
-// ✅ TRANSLATE BIO
+// ✅ Translate bio
 app.post("/poet/:slug/translate", async (req, res) => {
   try {
     const slug = req.params.slug;
@@ -117,7 +119,7 @@ app.post("/poet/:slug/translate", async (req, res) => {
   }
 });
 
-// ✅ TEST CONNECTION
+// ✅ Test MongoDB connection
 app.get("/test-connection", async (req, res) => {
   try {
     const poets = await poetsCollection.find({}).toArray();
@@ -128,7 +130,7 @@ app.get("/test-connection", async (req, res) => {
   }
 });
 
-// ✅ 🆕 POET'S CORNER PAGE — fully safe with fallback newToken
+// ✅ Poets Corner
 app.get("/poets_corner", async (req, res) => {
   if (!poetsCornerCollection) {
     return res.status(500).send("Database not connected yet");
@@ -143,7 +145,7 @@ app.get("/poets_corner", async (req, res) => {
   }
 });
 
-// ✅ 🆕 ADD A THOUGHT WITH DELETE TOKEN
+// ✅ Add a thought
 app.post("/add", async (req, res) => {
   if (!poetsCornerCollection) {
     return res.status(500).send("Database not connected yet");
@@ -163,7 +165,7 @@ app.post("/add", async (req, res) => {
   res.redirect(`/poets_corner?newToken=${deleteToken}`);
 });
 
-// ✅ 🆕 DELETE A THOUGHT WITH TOKEN CHECK
+// ✅ Delete a thought
 app.post("/delete/:id", async (req, res) => {
   if (!poetsCornerCollection) {
     return res.status(500).send("Database not connected yet");
@@ -182,7 +184,18 @@ app.post("/delete/:id", async (req, res) => {
   res.redirect("/poets_corner");
 });
 
-// ✅ SERVER START
+// ✅ Fallback route: serve *any* .html in root folder
+app.get("/:file", (req, res) => {
+  const fileName = req.params.file;
+  const filePath = path.join(__dirname, fileName);
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send("Page not found");
+  }
+});
+
+// ✅ Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pundalik Narayan - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Pundalik Narayan, a renowned Marathi poet known for his devotional and spiritual poetry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Pundalik Narayan</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="GOA_Pundalik_Narayan.jpg" alt="Pundalik Narayan Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Pundalik Narayan</h2>
+                <p class="text-gray-600 mb-4 subtitle">Renowned Marathi Poet</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> May 21, 1910, Bhusawal</p>
+                    <p><strong>Died:</strong> September 8, 1976, Mumbai</p>
+                    <p><strong>State:</strong> Maharashtra</p>
+                    <p><strong>Language:</strong> Marathi</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Self-educated</p>
+                    <p><strong>Occupation:</strong> Poet, Writer</p>
+                    <p><strong>Notable Role:</strong> Devotional Marathi Poet</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Pundalik Narayan, popularly known as Namdeo Dhasal, was a towering figure in Marathi literature, renowned for his powerful and revolutionary poetry. As a Dalit poet and founder of the Dalit Panthers, his works gave voice to the marginalized, blending raw emotion with social critique. His poetry, marked by vivid imagery and defiance, challenged caste oppression and societal inequalities, leaving an indelible mark on Indian literature.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.amazon.in/s?k=golpitha+book&crid=8JT0PXXAWY29&sprefix=golpitha%2Caps%2C380&ref=nb_sb_ss_mvt-t11-ranker_4_8" target="_blank" class="text-blue-600 hover:underline">Golpitha</a> (1972): A groundbreaking collection of Dalit poetry.</li>
+                            <li class="book-link"><a href="https://archive.org/details/tujhe_iyatta_kasa" target="_blank" class="text-blue-600 hover:underline">Tujhe Iyatta Kasa</a> (1981): Poems addressing caste and identity.</li>
+                            <li class="book-link"><a href="https://archive.org/details/gandhicha_kay_kela" target="_blank" class="text-blue-600 hover:underline">Gandhicha Kay Kela</a> (1992): A reflective collection on societal change.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Pundalik Narayan, known as Namdeo Dhasal, was born on May 21, 1910, in Bhusawal, Maharashtra, into a Dalit family. Facing caste-based discrimination, he was largely self-educated, drawing inspiration from the works of Dr. B.R. Ambedkar. His early life in Mumbai’s marginalized communities shaped his fierce poetic voice and commitment to social justice.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Namdeo Dhasal’s literary career revolutionized Marathi poetry with his raw, unapologetic style. His debut collection, <em>Golpitha</em>, vividly depicted the struggles of Mumbai’s underclass. As a pioneer of Dalit literature, his works challenged caste hierarchies and societal norms, blending street vernacular with profound imagery, earning him both acclaim and controversy.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content">
+                            Dhasal was a fierce activist, co-founding the Dalit Panthers in 1972, a militant organization inspired by the Black Panthers, to fight caste oppression. His poetry and activism intertwined, addressing systemic inequalities, caste discrimination, and the struggles of the marginalized, making him a powerful voice for social change in India.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Golpitha</em> (1972): A raw portrayal of Mumbai’s slums.</li>
+                                <li><em>Khel</em> (1975): A critique of societal hypocrisy.</li>
+                                <li><em>Ambedkari Chalval</em> (1981): A tribute to Dalit resistance.</li>
+                                <li><em>Ya Sattet Jeev Ramat Nahi</em> (1992): A reflection on human suffering.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Golpitha</em> (1974).</li>
+                                <li>Honored with the Padma Shri (1999) for contributions to literature.</li>
+                                <li>Co-founded the Dalit Panthers, a pivotal social movement.</li>
+                                <li>Recognized as a pioneer of Dalit literature in India.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Namdeo Dhasal’s poetry and activism continue to inspire Dalit literature and social movements. His works are studied for their raw power and social critique, and his legacy lives on through awards like the Namdeo Dhasal Award, honoring contributions to Marathi literature and social justice.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“I am not a poet of the palace, but of the streets.”</div>
+                            <div class="quote">“My words are the screams of the silenced.”</div>
+                            <div class="quote">“The fire in my heart burns brighter than the chains on my soul.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1910: Born in Bhusawal, Maharashtra.</li>
+                                <li>1972: Published <em>Golpitha</em> and co-founded Dalit Panthers.</li>
+                                <li>1974: Received the Sahitya Akademi Award.</li>
+                                <li>1975: Released <em>Moorkh Mhatorya</em>.</li>
+                                <li>1981: Published <em>Tujhe Iyatta Kasa</em>.</li>
+                                <li>1992: Released <em>Gandhicha Kay Kela</em>.</li>
+                                <li>1999: Awarded the Padma Shri.</li>
+                                <li>1976: Passed away in Mumbai.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Namdeo Dhasal was married to Malika Amar Sheikh, a fellow poet and writer. Their partnership was both personal and literary, with shared commitments to social justice. Details about their children are not widely documented, but Dhasal’s life was deeply intertwined with his activism and literary pursuits in Mumbai.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="goa.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

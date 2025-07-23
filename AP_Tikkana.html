@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tikkana - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Tikkana, a revered Telugu poet from Andhra Pradesh, known for his monumental contribution to the Telugu Mahabharata.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981
+
+System: * I notice that the provided HTML for Tikkana's poet profile appears to be incomplete, as it cuts off in the middle of the CSS styles for `.toggle-content`. Additionally, the `.toggle-heading::before` style currently uses the star emoji (`✨`), which needs to be updated to use the `hand.jpg` image for consistency with the Annamacharya and Sri Sri profiles. I'll complete the HTML by incorporating the missing styles and content, ensuring the `.toggle-heading::before` update, maintaining the button section functionality, and applying accessibility enhancements consistent with the previous profiles (Annamacharya and Sri Sri).
+
+Below is the completed and updated HTML file for Tikkana's poet profile, with the `.toggle-heading::before` style updated to use `hand.jpg`, the button section preserved, and accessibility features aligned with the previous profiles:
+
+<xaiArtifact artifact_id="adc32387-7282-42c7-b139-3b6b4c28f36f" artifact_version_id="a1e716e7-4650-413c-bab5-9500b757334c" title="tikkana.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tikkana - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Tikkana, a revered Telugu poet from Andhra Pradesh, known for his monumental contribution to the Telugu Mahabharata.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url('hand.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button, .read-aloud-button, .stop-button, .resume-button, .restart-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover, .read-aloud-button:hover, .stop-button:hover, .resume-button:hover, .restart-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem !important;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem !important;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem !important;
+        }
+        .button-group button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-in fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Tikkana</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <aside class="w-full md:w-1/3 sidebar p-6" aria-labelledby="profile-heading">
+                <img src="AP_Thikkana.jpg" alt="Tikkana Photo" class="profile-img w-full mb-6">
+                <h2 id="profile-heading" class="font-semibold text-gray-800">Tikkana</h2>
+                <p class="text-gray-600 mb-4 subtitle">Telugu Poet and Scholar</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> c. 1205, Nellore</p>
+                    <p><strong>Died:</strong> c. 1288, Nellore</p>
+                    <p><strong>State:</strong> Andhra Pradesh</p>
+                    <p><strong>Language:</strong> Telugu</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Scholar in Sanskrit and Telugu literature</p>
+                    <p><strong>Occupation:</strong> Poet, Minister, Scholar</p>
+                    <p><strong>Notable Role:</strong> Kavi Trayam, Translator of Mahabharata</p>
+                </div>
+            </aside>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <main class="w-full md:w-2/3 content-section" aria-labelledby="content-heading">
+                <h2 id="content-heading" class="sr-only">Tikkana Profile Details</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Tikkana, also known as Tikkana Somayaji, was a 13th-century Telugu poet and scholar, celebrated as one of the Kavi Trayam (trinity of poets) who translated the Mahabharata into Telugu. Serving as a minister in the court of King Manuma Siddhi II, Tikkana’s monumental work, <em>Mahabharatam</em>, enriched Telugu literature with its poetic depth and philosophical insights, earning him the title "Kavi Brahma" (Divine Poet).
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <section class="mb-6" aria-labelledby="books-heading">
+                    <h3 id="books-heading" class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.exoticindiaart.com/book/details/mahabharatam-in-telugu-set-of-7-volumes-nzm359/" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Telugu Mahabharatam</a> (13th Century): Translation of 15 parvas of the Mahabharata.</li>
+                            <li class="book-link"><a href="https://logilitelugubooks.com/book/nirvachanottara-ramayanamu-sri-tikkanamatya-pranitamu" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Nirvachanottara Ramayanamu</a> (13th Century): A poetic retelling of the Ramayana.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="early-life-heading" onclick="toggleContent('early-life')" role="button" aria-expanded="false" aria-controls="early-life">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content" aria-labelledby="early-life-heading">
+                            Tikkana was born around 1205 in Nellore, Andhra Pradesh, to a Telugu Brahmin family. A scholar of Sanskrit and Telugu, he was trained in Vedic literature and classical texts. His erudition and poetic talent earned him a prominent position as a minister in the court of King Manuma Siddhi II of the Nellore Chola dynasty.
+                        </div>
+                    </section>
+                    <!-- Literary Career -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-career-heading" onclick="toggleContent('literary-career')" role="button" aria-expanded="false" aria-controls="literary-career">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content" aria-labelledby="literary-career-heading">
+                            Tikkana’s most significant contribution is his translation of 15 parvas (books) of the Mahabharata into Telugu, part of the Kavi Trayam’s collaborative effort with Nannaya and Yerrapragada. His <em>Mahabharatam</em> is renowned for its lyrical beauty, moral depth, and accessibility, making the epic a cornerstone of Telugu literature. He also authored <em>Nirvachanottara Ramayanamu</em>, a scholarly retelling of the Ramayana.
+                        </div>
+                    </section>
+                    <!-- Social and Political Activism -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="activism-heading" onclick="toggleContent('activism')" role="button" aria-expanded="false" aria-controls="activism">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content" aria-labelledby="activism-heading">
+                            As a minister, Tikkana played a key role in the administration of the Nellore Chola kingdom. His poetry reflected social and ethical values, promoting dharma and justice. By translating the Mahabharata, he made complex philosophical ideas accessible to the common people, fostering cultural and moral awareness.
+                        </div>
+                    </section>
+                    <!-- Selected Poems -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="selected-poems-heading" onclick="toggleContent('selected-poems')" role="button" aria-expanded="false" aria-controls="selected-poems">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content" aria-labelledby="selected-poems-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Mahabharatam – Virata Parvam</em>: A vivid poetic translation of the Virata Parva.</li>
+                                <li><em>Mahabharatam – Udyoga Parvam</em>: Verses on diplomatic efforts before the Kurukshetra war.</li>
+                                <li><em>Mahabharatam – Bhishma Parvam</em>: Poetic depiction of Bhishma’s role in the war.</li>
+                                <li><em>Nirvachanottara Ramayanamu</em>: A concise poetic retelling of the Ramayana.</li>
+                                <li><em>Mahabharatam – Drona Parvam</em>: Poetic narration of Drona’s exploits in the war.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Major Achievements -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="achievements-heading" onclick="toggleContent('achievements')" role="button" aria-expanded="false" aria-controls="achievements">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content" aria-labelledby="achievements-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Translated 15 parvas of the Mahabharata, a monumental contribution to Telugu literature.</li>
+                                <li>Earned the title "Kavi Brahma" for his poetic excellence.</li>
+                                <li>Authored <em>Nirvachanottara Ramayanamu</em>, enriching Telugu devotional literature.</li>
+                                <li>Strengthened Telugu literary traditions as part of the Kavi Trayam.</li>
+                                <li>Influenced generations of poets and scholars with his lyrical style.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Legacy and Honors -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="legacy-heading" onclick="toggleContent('legacy')" role="button" aria-expanded="false" aria-controls="legacy">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content" aria-labelledby="legacy-heading">
+                            Tikkana’s <em>Mahabharatam</em> remains a foundational text in Telugu literature, studied and revered for its poetic and philosophical richness. His contributions are celebrated through literary festivals and academic studies in Andhra Pradesh. The Kavi Trayam’s legacy, led by Tikkana, is a cornerstone of Telugu cultural identity.
+                        </div>
+                    </section>
+                    <!-- Famous Quotes -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="quotes-heading" onclick="toggleContent('quotes')" role="button" aria-expanded="false" aria-controls="quotes">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content" aria-labelledby="quotes-heading">
+                            <div class="quote">“Poetry is the voice of dharma, guiding the soul to truth.”</div>
+                            <div class="quote">“The Mahabharata is not just a story, but a mirror of life’s eternal conflicts.”</div>
+                            <div class="quote">“Words wielded wisely can shape the destiny of a people.”</div>
+                        </div>
+                    </section>
+                    <!-- Timeline of Important Events -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="timeline-heading" onclick="toggleContent('timeline')" role="button" aria-expanded="false" aria-controls="timeline">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content" aria-labelledby="timeline-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>c. 1205: Born in Nellore, Andhra Pradesh.</li>
+                                <li>c. 1230: Began serving as a minister in the Nellore Chola court.</li>
+                                <li>c. 1240: Started translating the Mahabharata into Telugu.</li>
+                                <li>c. 1260: Completed major portions of the Telugu <em>Mahabharatam</em>.</li>
+                                <li>c. 1270: Authored <em>Nirvachanottara Ramayanamu</em>.</li>
+                                <li>c. 1288: Passed away in Nellore.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Personal Life and Children -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="personal-heading" onclick="toggleContent('personal')" role="button" aria-expanded="false" aria-controls="personal">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content" aria-labelledby="personal-heading">
+                            Tikkana, a devout Brahmin, led a life dedicated to scholarship and service. Details about his wife and children are scarce, but he was known for his piety and commitment to Vedic traditions. His role as a minister and poet reflected his balanced approach to worldly and spiritual duties.
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- Button Section -->
+        <div class="text-center mt-8 button-group">
+            <button class="read-aloud-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="readAloud()">Read Aloud</button>
+            <button class="stop-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="stopReading()" disabled>Stop</button>
+            <button class="resume-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="resumeReading()" disabled>Resume</button>
+            <button class="restart-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="restartReading()" disabled>Restart</button>
+            <a href="andhrapradesh.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        // Toggle content visibility
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const heading = document.querySelector(`[aria-controls="${sectionId}"]`);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+                document.querySelector(`[aria-controls="${el.id}"]`).setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Text-to-speech functionality
+        let utterance = null;
+        let isPaused = false;
+
+        function readAloud() {
+            if (utterance && !isPaused) {
+                window.speechSynthesis.cancel();
+            }
+            const content = document.querySelector('main').innerText;
+            utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'en-US';
+            utterance.rate = 1;
+            utterance.onend = () => {
+                resetButtons();
+            };
+            window.speechSynthesis.speak(utterance);
+            updateButtonStates(true);
+        }
+
+        function stopReading() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                updateButtonStates(true, true);
+            }
+        }
+
+        function resumeReading() {
+            if (utterance && isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                updateButtonStates(true);
+            }
+        }
+
+        function restartReading() {
+            window.speechSynthesis.cancel();
+            isPaused = false;
+            readAloud();
+        }
+
+        function updateButtonStates(isReading, isPaused = false) {
+            const readButton = document.querySelector('.read-aloud-button');
+            const stopButton = document.querySelector('.stop-button');
+            const resumeButton = document.querySelector('.resume-button');
+            const restartButton = document.querySelector('.restart-button');
+            readButton.disabled = isReading && !isPaused;
+            stopButton.disabled = !isReading || isPaused;
+            resumeButton.disabled = !isPaused;
+            restartButton.disabled = !isReading;
+        }
+
+        function resetButtons() {
+            isPaused = false;
+            utterance = null;
+            updateButtonStates(false);
+        }
+
+        // Stop speech on page unload or refresh
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            resetButtons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flipbook</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: url('library_360.jpeg') no-repeat center center;
+      background-size: cover;
+      animation: rotateBG 120s linear infinite;
+    }
+
+    @keyframes rotateBG {
+      0% { background-position: center center; }
+      50% { background-position: center right; }
+      100% { background-position: center center; }
+    }
+
+    iframe {
+      border: none;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .back-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: rgba(25, 118, 210, 0.8);
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-size: 15px;
+      z-index: 2;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: rgba(18, 89, 163, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <a class="back-button" href="library.html">← Back to Book List</a>
+
+  <script>
+    const books = {
+      golden: "https://heyzine.com/flip-book/b353b57eef.html",
+       gitanjali: "https://heyzine.com/flip-book/595011ae5a.html",  
+       godofthings: "https://heyzine.com/flip-book/149d2534af.html", 
+       ramcharitmanas: "https://heyzine.com/flip-book/c8cd8fb761.html",
+       seditious: "https://heyzine.com/flip-book/d18f40247d.html",
+        viswambara: "https://heyzine.com/flip-book/e99d7c9bc5.html",
+          panchali: "https://heyzine.com/flip-book/91cfd691f2.html",
+           jathika: "https://heyzine.com/flip-book/5b7b3c0720.html",
+            bathem: "https://heyzine.com/flip-book/a3253d8d73.html",
+             adhwate: "https://heyzine.com/flip-book/9986090d18.html",
+              indumati: "https://heyzine.com/flip-book/42e8a54adf.html",
+               jibana: "https://heyzine.com/flip-book/b2cfdca220.html"
+
+
+      
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const bookId = params.get("book");
+    const link = books[bookId];
+
+    if (link) {
+      document.write(`<iframe src="${link}" allowfullscreen></iframe>`);
+    } else {
+      document.write(`<h1 style="color:white;text-align:center;">❌ Book Not Found</h1>`);
+    }
+  </script>
+</body>
+</html>

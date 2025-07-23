@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Sri - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Sri Sri, a revolutionary Telugu poet from Telangana, known for his progressive and evocative poetry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url('hand.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button, .read-aloud-button, .stop-button, .resume-button, .restart-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover, .read-aloud-button:hover, .stop-button:hover, .resume-button:hover, .restart-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+        .button-group button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Sri Sri</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <aside class="w-full md:w-1/3 sidebar p-6" aria-labelledby="profile-heading">
+                <img src="AP_srisri_img.jpg" alt="Sri Sri Photo" class="profile-img w-full mb-6">
+                <h2 id="profile-heading" class="font-semibold text-gray-800">Sri Sri</h2>
+                <p class="text-gray-600 mb-4 subtitle">Revolutionary Telugu Poet</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> April 30, 1910, Visakhapatnam</p>
+                    <p><strong>Died:</strong> June 15, 1983, Chennai</p>
+                    <p><strong>State:</strong> Andhra Pradesh (now Telangana region)</p>
+                    <p><strong>Language:</strong> Telugu</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Self-educated, attended Madras Christian College</p>
+                    <p><strong>Occupation:</strong> Poet, Lyricist, Social Reformer</p>
+                    <p><strong>Notable Role:</strong> Pioneer of Progressive Telugu Poetry</p>
+                </div>
+            </aside>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <main class="w-full md:w-2/3 content-section" aria-labelledby="content-heading">
+                <h2 id="content-heading" class="sr-only">Sri Sri Profile Details</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Srirangam Srinivasa Rao, popularly known as Sri Sri, was a revolutionary Telugu poet, lyricist, and social reformer whose works ignited a progressive movement in Telugu literature. Born in Visakhapatnam, his poetry addressed social inequalities, human struggles, and the quest for freedom, blending Marxist ideals with lyrical intensity. Known as the "People’s Poet," Sri Sri’s contributions extended to Telugu cinema through his evocative lyrics.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <section class="mb-6" aria-labelledby="books-heading">
+                    <h3 id="books-heading" class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.goodreads.com/book/show/8493614-maha-prasthanam" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Maha Prasthanam</a> (1950): A seminal collection of revolutionary poetry.</li>
+                            <li class="book-link"><a href="https://www.goodreads.com/book/show/16159782-khadga-srusti" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Khadga Srushti</a> (1966): Poems reflecting social and political struggles.</li>
+                            <li class="book-link"><a href="https://www.goodreads.com/book/show/17668614-siprali" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Siprali</a> (1970): A collection of lyrical and reflective poems.</li>
+                            <li class="book-link"><a href="https://www.telugubooks.in/products/sri-sri-anantam" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Anantam</a> (1978): A compilation of his later works.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="early-life-heading" onclick="toggleContent('early-life')" role="button" aria-expanded="false" aria-controls="early-life">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content" aria-labelledby="early-life-heading">
+                            Sri Sri was born on April 30, 1910, in Visakhapatnam, Andhra Pradesh, to a Telugu Brahmin family. His father, Venkata Ramana Rao, was a school teacher. Showing an early aptitude for literature, Sri Sri was largely self-educated but briefly attended Madras Christian College. Influenced by Marxist ideology and the socio-political climate of colonial India, he began writing poetry that challenged societal norms and championed the working class.
+                        </div>
+                    </section>
+                    <!-- Literary Career -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-career-heading" onclick="toggleContent('literary-career')" role="button" aria-expanded="false" aria-controls="literary-career">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content" aria-labelledby="literary-career-heading">
+                            Sri Sri’s poetry revolutionized Telugu literature by introducing progressive themes and modernist styles. His seminal work, <em>Maha Prasthanam</em> (1950), is considered a landmark in Telugu poetry, blending Marxist ideology with emotional depth. He wrote over 1,000 poems and contributed lyrics to Telugu cinema, earning widespread acclaim. His work inspired the Digambara Kavulu (Naked Poets) movement and influenced generations of poets and writers.
+                        </div>
+                    </section>
+                    <!-- Social and Political Activism -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="activism-heading" onclick="toggleContent('activism')" role="button" aria-expanded="false" aria-controls="activism">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content" aria-labelledby="activism-heading">
+                            A committed Marxist, Sri Sri was deeply involved in the Progressive Writers’ Movement and the Telangana Armed Struggle (1946–1951). His poetry served as a voice for the oppressed, addressing caste, class, and colonial exploitation. He was a member of the Communist Party of India and used his writings to advocate for social justice and equality.
+                        </div>
+                    </section>
+                    <!-- Selected Poems -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="selected-poems-heading" onclick="toggleContent('selected-poems')" role="button" aria-expanded="false" aria-controls="selected-poems">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content" aria-labelledby="selected-poems-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Maha Prasthanam</em> (1950): A call for revolution and human liberation.</li>
+                                <li><em>Jayabheri</em> (1950): A poem celebrating the triumph of the human spirit.</li>
+                                <li><em>Desa Charitra</em> (1966): A reflection on India’s history and struggles.</li>
+                                <li><em>Maro Prapancham</em> (1950): A critique of societal inequalities.</li>
+                                <li><em>Kavita O Kavita</em> (1970): A meta-poem on the essence of poetry.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Major Achievements -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="achievements-heading" onclick="toggleContent('achievements')" role="button" aria-expanded="false" aria-controls="achievements">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content" aria-labelledby="achievements-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Maha Prasthanam</em> (1977).</li>
+                                <li>Pioneered the Progressive Poetry Movement in Telugu literature.</li>
+                                <li>Contributed over 1,000 songs to Telugu cinema.</li>
+                                <li>Received the Soviet Land Nehru Award (1966).</li>
+                                <li>Honored with the Raja-Lakshmi Literary Award (1980).</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Legacy and Honors -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="legacy-heading" onclick="toggleContent('legacy')" role="button" aria-expanded="false" aria-controls="legacy">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content" aria-labelledby="legacy-heading">
+                            Sri Sri’s legacy lives on through his revolutionary poetry and contributions to Telugu literature and cinema. His works continue to inspire social movements and literary discourse. The Sri Sri Sahitya Academy in Andhra Pradesh and various literary awards in his name honor his contributions.
+                        </div>
+                    </section>
+                    <!-- Famous Quotes -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="quotes-heading" onclick="toggleContent('quotes')" role="button" aria-expanded="false" aria-controls="quotes">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content" aria-labelledby="quotes-heading">
+                            <div class="quote">“The world is mine, and I am the world’s!”</div>
+                            <div class="quote">“Poetry is the voice of the heart, the cry of the oppressed.”</div>
+                            <div class="quote">“Let us march forward, breaking the chains of slavery.”</div>
+                        </div>
+                    </section>
+                    <!-- Timeline of Important Events -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="timeline-heading" onclick="toggleContent('timeline')" role="button" aria-expanded="false" aria-controls="timeline">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content" aria-labelledby="timeline-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1910: Born in Visakhapatnam, Andhra Pradesh.</li>
+                                <li>1933: Published his first poem, <em>Jayabheri</em>.</li>
+                                <li>1950: Released <em>Maha Prasthanam</em>.</li>
+                                <li>1966: Received the Soviet Land Nehru Award.</li>
+                                <li>1970: Published <em>Siprali</em>.</li>
+                                <li>1977: Awarded the Sahitya Akademi Award.</li>
+                                <li>1980: Honored with the Raja-Lakshmi Literary Award.</li>
+                                <li>1983: Passed away in Chennai.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Personal Life and Children -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="personal-heading" onclick="toggleContent('personal')" role="button" aria-expanded="false" aria-controls="personal">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content" aria-labelledby="personal-heading">
+                            Sri Sri married Venkataramana in 1932 and later Sarojini in 1943 after his first wife’s death. He had four children: two sons, Venkateswara Rao and Manohar, and two daughters, Susheela and Saroja. Despite his public persona, Sri Sri led a simple life dedicated to his art and activism.
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- Button Section -->
+        <div class="text-center mt-8 button-group">
+            <button class="read-aloud-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="readAloud()">Read Aloud</button>
+            <button class="stop-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="stopReading()" disabled>Stop</button>
+            <button class="resume-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="resumeReading()" disabled>Resume</button>
+            <button class="restart-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="restartReading()" disabled>Restart</button>
+            <a href="andhrapradesh.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        // Toggle content visibility
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const heading = document.querySelector(`[aria-controls="${sectionId}"]`);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+                document.querySelector(`[aria-controls="${el.id}"]`).setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Text-to-speech functionality
+        let utterance = null;
+        let isPaused = false;
+
+        function readAloud() {
+            if (utterance && !isPaused) {
+                window.speechSynthesis.cancel();
+            }
+            const content = document.querySelector('main').innerText;
+            utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'en-US';
+            utterance.rate = 1;
+            utterance.onend = () => {
+                resetButtons();
+            };
+            window.speechSynthesis.speak(utterance);
+            updateButtonStates(true);
+        }
+
+        function stopReading() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                updateButtonStates(true, true);
+            }
+        }
+
+        function resumeReading() {
+            if (utterance && isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                updateButtonStates(true);
+            }
+        }
+
+        function restartReading() {
+            window.speechSynthesis.cancel();
+            isPaused = false;
+            readAloud();
+        }
+
+        function updateButtonStates(isReading, isPaused = false) {
+            const readButton = document.querySelector('.read-aloud-button');
+            const stopButton = document.querySelector('.stop-button');
+            const resumeButton = document.querySelector('.resume-button');
+            const restartButton = document.querySelector('.restart-button');
+            readButton.disabled = isReading && !isPaused;
+            stopButton.disabled = !isReading || isPaused;
+            resumeButton.disabled = !isPaused;
+            restartButton.disabled = !isReading;
+        }
+
+        function resetButtons() {
+            isPaused = false;
+            utterance = null;
+            updateButtonStates(false);
+        }
+
+        // Stop speech on page unload or refresh
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            resetButtons();
+        });
+    </script>
+</body>
+</html>

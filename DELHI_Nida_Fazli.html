@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nida Fazli - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Nida Fazli, a renowned Urdu poet and lyricist, known for his evocative ghazals and Bollywood songs.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Nida Fazli</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="DELHI_Nida_Fazli.jpeg" alt="Nida Fazli Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Nida Fazli</h2>
+                <p class="text-gray-600 mb-4 subtitle">Renowned Urdu Poet and Lyricist</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> October 12, 1938, Delhi</p>
+                    <p><strong>Died:</strong> February 8, 2016, Mumbai</p>
+                    <p><strong>State:</strong> Delhi</p>
+                    <p><strong>Language:</strong> Urdu, Hindi</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Graduate, University of Delhi</p>
+                    <p><strong>Occupation:</strong> Poet, Lyricist, Writer</p>
+                    <p><strong>Notable Role:</strong> Prominent Modern Urdu Poet and Bollywood Lyricist</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Nida Fazli was a celebrated Urdu poet and Bollywood lyricist whose evocative ghazals and songs blended simplicity with profound emotion. Born in Delhi, his work reflected themes of love, loss, and the human condition, resonating with diverse audiences. His contributions to Urdu poetry and Indian cinema, including iconic film songs, made him a beloved figure in modern Indian literature.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.amazon.in/Bhartiy-History-Panchagavya-Purification-Environment/dp/B097P9KMLH" target="_blank" class="text-blue-600 hover:underline">Dhoop Kiran</a> (1973): A collection of ghazals and poems.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Vivek-Joshi/dp/9358980796" target="_blank" class="text-blue-600 hover:underline">Safar Mein Dhoop</a> (1983): Reflective poetry on life’s journey.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Nan-Umrigar-ebook/dp/B00PATQPTG" target="_blank" class="text-blue-600 hover:underline">Khamoshi Ki Aawaz</a> (1998): A compilation of introspective works.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Mulaqatein-Alokdhanva/dp/8119159276" target="_blank" class="text-blue-600 hover:underline">Mulaqatein</a> (2000): A collection of poems and dohas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Nida Fazli was born on October 12, 1938, in Delhi to a family with a rich literary tradition. After the Partition of India, his family moved to Pakistan, but he chose to stay in India. He graduated from the University of Delhi and was influenced by Urdu literary circles, developing a unique style that blended traditional and modern poetic forms.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Nida Fazli’s career spanned poetry, prose, and Bollywood lyrics. His ghazals, known for their simplicity and emotional depth, gained widespread acclaim. He also wrote dohas, reviving the traditional Hindi poetic form. His Bollywood songs for films like <em>Razia Sultan</em> and <em>Sarfarosh</em> showcased his lyrical versatility, making him a household name.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content">
+                            Nida Fazli’s poetry often reflected social and cultural concerns, addressing themes of communal harmony and human struggles. While not an overt activist, his works subtly critiqued societal divides and celebrated India’s pluralistic ethos, making him a voice for unity and introspection in a diverse nation.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Kabhi Kisi Ko Muqammal Jahan Nahi Milta</em> (1973): A reflective ghazal on life’s imperfections.</li>
+                                <li><em>Har Taraf Har Jagah</em> (1983): A poem on human connection.</li>
+                                <li><em>Duniya Jise Kehte Hain</em> (1998): A critique of materialism.</li>
+                                <li><em>Hosh Walon Ko Khabar Kya</em> (1999): A popular Bollywood song from <em>Sarfarosh</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Khamoshi Ki Aawaz</em> (1998).</li>
+                                <li>Honored with the Padma Shri (2013) for contributions to literature.</li>
+                                <li>Wrote iconic Bollywood songs for films like <em>Razia Sultan</em> and <em>Sarfarosh</em>.</li>
+                                <li>Revived the doha form in modern Urdu poetry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Nida Fazli’s poetry and lyrics continue to resonate with audiences for their emotional depth and accessibility. His works are celebrated in mushairas and literary festivals, and his contributions to Bollywood have left a lasting impact. Awards like the Nida Fazli Award honor his legacy in Urdu literature.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“No one ever finds a perfect world.”</div>
+                            <div class="quote">“What do the sane know of the madness of love?”</div>
+                            <div class="quote">“Every place, every corner, is filled with the stories of hearts.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1938: Born in Delhi.</li>
+                                <li>1973: Published <em>Dhoop Kiran</em>.</li>
+                                <li>1983: Released <em>Safar Mein Dhoop</em>.</li>
+                                <li>1998: Received the Sahitya Akademi Award.</li>
+                                <li>1999: Wrote lyrics for <em>Sarfarosh</em>.</li>
+                                <li>2013: Awarded the Padma Shri.</li>
+                                <li>2016: Passed away in Mumbai.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Nida Fazli was married and had a daughter. He lived a private life, focusing on his literary and lyrical work. After moving to Mumbai, he became deeply involved in the film industry while maintaining his commitment to Urdu poetry, balancing personal and professional spheres with humility.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="delhi.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

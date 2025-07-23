@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinod Kumar Shukla - Poet Profile</title>
+    <meta name="description" content="Explore the life and works of Vinod Kumar Shukla, a distinguished Hindi poet and novelist known for his minimalist and evocative literary style.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Vinod Kumar Shukla</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="CHGHAR_Vinod_Kumar_Shukla.jpg" alt="Vinod Kumar Shukla Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Vinod Kumar Shukla</h2>
+                <p class="text-gray-600 mb-4 subtitle">Hindi Poet and Novelist</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> January 1, 1937, Rajnandgaon, Chhattisgarh</p>
+                    <p><strong>Died:</strong> Alive</p>
+                    <p><strong>State:</strong> Chhattisgarh</p>
+                    <p><strong>Language:</strong> Hindi</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> M.Sc. in Agricultural Sciences</p>
+                    <p><strong>Occupation:</strong> Poet, Novelist, Academic</p>
+                    <p><strong>Notable Role:</strong> Leading Voice in Contemporary Hindi Literature</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Vinod Kumar Shukla is a distinguished Hindi poet and novelist, renowned for his minimalist yet profound literary style. Born in Rajnandgaon, Chhattisgarh, his works blend simplicity with philosophical depth, exploring themes of human existence, nature, and the mundane beauty of everyday life. A key figure in contemporary Hindi literature, Shukla’s evocative poetry and novels have earned him prestigious awards and a devoted readership, both in India and globally.
+                </p>
+                <hr class="section-divider">
+                <!-- Notable Works -->
+                <div class="mb-6">
+                    <h3 class="books-header">Notable Works</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Vinod-Kumar-Shukla/dp/8126706899" target="_blank" class="text-blue-600 hover:underline">Naukar Ki Kameez</a> (1979): A novel exploring identity and bureaucracy.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Vinod-Kumar-Shukla/dp/939282078X" target="_blank" class="text-blue-600 hover:underline">Deewar Mein Ek Khidki Rehti Thi</a> (1996): A novel blending realism and fantasy.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Vinod-Kumar-Shukla/dp/9392757018" target="_blank" class="text-blue-600 hover:underline">Sab Kuch Hona Bacha Rahega</a> (1992): A celebrated poetry collection.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Vinod Kumar Shukla was born on January 1, 1937, in Rajnandgaon, Chhattisgarh. He pursued higher education in agricultural sciences, earning an M.Sc., but his passion for literature led him to a career in writing. His early life in a small town influenced his unique perspective, infusing his work with a deep connection to ordinary life and nature.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Vinod Kumar Shukla’s literary career began with his poetry collection <em>Lagbhag Jai Hind</em> (1971), followed by his acclaimed novel <em>Naukar Ki Kameez</em> (1979). His works, including <em>Deewar Mein Ek Khidki Rehti Thi</em> (1996) and poetry collection <em>Sab Kuch Hona Bacha Rahega</em> (1992), are known for their minimalist style and philosophical insights. Shukla’s writing has been widely translated, earning him recognition as a unique voice in Hindi literature.
+                        </div>
+                    </div>
+                    <!-- Social and Cultural Impact -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Cultural Impact</h3>
+                        <div id="activism" class="toggle-content">
+                            While not overtly political, Shukla’s works subtly address social issues, including class, identity, and human relationships. His focus on the lives of ordinary people challenges conventional literary narratives, offering a voice to the overlooked. His writing has influenced contemporary Hindi literature, inspiring writers to explore simplicity and depth in their work.
+                        </div>
+                    </div>
+                    <!-- Selected Works -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Works</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Lagbhag Jai Hind</em> (1971): A poem reflecting quiet patriotism.</li>
+                                <li><em>Sab Kuch Hona Bacha Rahega</em> (1992): A meditation on existence.</li>
+                                <li><em>Ek Chhoti Si Dukaan</em> (1992): A poem celebrating simplicity.</li>
+                                <li><em>Naukar Ki Kameez</em> (1979): A novel excerpt reflecting identity struggles.</li>
+                                <li><em>Ped Par Kamra</em> (1981): A poetic exploration of imagination.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Deewar Mein Ek Khidki Rehti Thi</em> (1996).</li>
+                                <li>Awarded the Muktibodh Samman for contributions to Hindi literature.</li>
+                                <li>Honored with the Shikhar Samman by the Madhya Pradesh government.</li>
+                                <li>Recognized internationally through translations of his works.</li>
+                                <li>Influenced contemporary Hindi literature with his minimalist style.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Vinod Kumar Shukla’s legacy lies in his ability to find profound meaning in the ordinary. His works are studied in literary circles and universities, celebrated for their unique voice and philosophical depth. Literary festivals and awards continue to honor his contributions, and his translated works have introduced his vision to a global audience.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“The smallest things hold the largest truths.”</div>
+                            <div class="quote">“Life is a room on a tree, fragile yet full of wonder.”</div>
+                            <div class="quote">“Poetry is the shadow of the ordinary, cast in light.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1937: Born in Rajnandgaon, Chhattisgarh.</li>
+                                <li>1971: Published <em>Lagbhag Jai Hind</em>.</li>
+                                <li>1979: Released <em>Naukar Ki Kameez</em>.</li>
+                                <li>1992: Published <em>Sab Kuch Hona Bacha Rahega</em>.</li>
+                                <li>1996: Published <em>Deewar Mein Ek Khidki Rehti Thi</em> and won Sahitya Akademi Award.</li>
+                                <li>2000s: Received multiple literary honors, including Muktibodh Samman.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Vinod Kumar Shukla leads a private life, focusing on his literary and academic pursuits. He is married and has children, but details remain limited as he prefers to keep his personal life out of the public eye. His humility and dedication to his craft have earned him respect among peers and readers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="chhattisgarh.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

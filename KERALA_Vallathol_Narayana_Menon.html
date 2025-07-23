@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vallathol Narayana Menon - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Vallathol Narayana Menon, a renowned Malayalam poet and cultural icon from Kerala, known for his contributions to Malayalam literature and the revival of Kathakali.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button, .read-aloud-button, .stop-button, .resume-button, .restart-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover, .read-aloud-button:hover, .stop-button:hover, .resume-button:hover, .restart-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: none; }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+        .button-group button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Vallathol Narayana Menon</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <aside class="w-full md:w-1/3 sidebar p-6" aria-labelledby="profile-heading">
+                <img src="KERALA_Vallathol_Narayana_Menon.jpg" alt="Portrait of Vallathol Narayana Menon" class="profile-img w-full mb-6">
+                <h2 id="profile-heading" class="font-semibold text-gray-800">Vallathol Narayana Menon</h2>
+                <p class="text-gray-600 mb-4 subtitle">Malayalam Poet and Cultural Icon</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> October 16, 1878, Chennara, Kerala</p>
+                    <p><strong>State:</strong> Kerala</p>
+                    <p><strong>Language:</strong> Malayalam</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Traditional Education in Sanskrit and Malayalam</p>
+                    <p><strong>Occupation:</strong> Poet, Translator, Cultural Reformer</p>
+                    <p><strong>Notable Role:</strong> Founder of Kerala Kalamandalam</p>
+                </div>
+            </aside>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <main class="w-full md:w-2/3 content-section" aria-labelledby="content-heading">
+                <h2 id="content-heading" class="sr-only">Vallathol Narayana Menon Profile Details</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Vallathol Narayana Menon (1878–1958) was a towering figure in Malayalam literature, celebrated as one of the triumvirate poets alongside Kumaran Asan and Ulloor S. Parameswara Iyer. His poetry, infused with patriotism, cultural pride, and spiritual depth, played a pivotal role in Kerala's literary and cultural renaissance. As the founder of Kerala Kalamandalam, he revitalized Kathakali, preserving Kerala's traditional art forms. His works, including translations of Sanskrit epics, enriched Malayalam literature and inspired nationalistic fervor during India's freedom struggle.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <section class="mb-6" aria-labelledby="books-heading">
+                    <h3 id="books-heading" class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://dcbookstore.com/books/sahitya-manjari" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Sahityamanjari</a> (1916): A collection of lyrical poems showcasing his poetic mastery.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Magdalana-Mariyam-Vallathol/dp/B007E4VNSI" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Magdalana Mariyam</a> (1930): A poetic retelling of the story of Mary Magdalene.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Ramayan-Valmiki-Vol-Translated-English/dp/0483188697" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Ramayana Translation</a> (1935): A celebrated Malayalam translation of Valmiki’s epic.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="early-life-heading" onclick="toggleContent('early-life')" role="button" aria-expanded="false" aria-controls="early-life">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content" aria-labelledby="early-life-heading">
+                            Vallathol Narayana Menon was born on October 16, 1878, in Chennara, Kerala, into a traditional Nair family. He received early education in Sanskrit, Malayalam, and classical literature, which deeply influenced his poetic style. His exposure to Kerala's rich cultural traditions, including Kathakali, shaped his lifelong commitment to literature and the arts.
+                        </div>
+                    </section>
+                    <!-- Literary Career -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-career-heading" onclick="toggleContent('literary-career')" role="button" aria-expanded="false" aria-controls="literary-career">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content" aria-labelledby="literary-career-heading">
+                            Vallathol’s literary career spanned several decades, marked by poems that celebrated Kerala’s heritage, spirituality, and resistance against colonial rule. His works, such as <em>Sahityamanjari</em> and <em>Chithrayogam</em>, introduced innovative poetic forms to Malayalam literature. His translations of Sanskrit epics like the Ramayana and Mahabharata made classical texts accessible to Malayalam readers, cementing his legacy as a literary giant.
+                        </div>
+                    </section>
+                    <!-- Literary Contributions -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-contributions-heading" onclick="toggleContent('literary-contributions')" role="button" aria-expanded="false" aria-controls="literary-contributions">Literary Contributions</h3>
+                        <div id="literary-contributions" class="toggle-content" aria-labelledby="literary-contributions-heading">
+                            Vallathol’s poetry enriched Malayalam literature with its lyrical beauty, patriotic zeal, and cultural resonance. His works bridged traditional and modern sensibilities, inspiring the literary renaissance in Kerala. His translations of epics and his original poems, like <em>Magdalana Mariyam</em>, showcased his versatility. His establishment of Kerala Kalamandalam in 1930 preserved Kathakali and other art forms, significantly contributing to Kerala’s cultural identity.
+                        </div>
+                    </section>
+                    <!-- Selected Works -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="selected-works-heading" onclick="toggleContent('selected-works')" role="button" aria-expanded="false" aria-controls="selected-works">Selected Works</h3>
+                        <div id="selected-works" class="toggle-content" aria-labelledby="selected-works-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Sahityamanjari</em>: A collection of lyrical poems reflecting nature and spirituality.</li>
+                                <li><em>Chithrayogam</em>: A narrative poem blending mythology and human emotions.</li>
+                                <li><em>Magdalana Mariyam</em>: A poetic exploration of redemption and compassion.</li>
+                                <li><em>Ramayana Translation</em>: A masterful rendering of Valmiki’s epic in Malayalam.</li>
+                                <li><em>Bharataparyatanam</em>: A patriotic poem celebrating India’s cultural unity.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Major Achievements -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="achievements-heading" onclick="toggleContent('achievements')" role="button" aria-expanded="false" aria-controls="achievements">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content" aria-labelledby="achievements-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Pioneered modern Malayalam poetry as part of the triumvirate with Asan and Ulloor.</li>
+                                <li>Founded Kerala Kalamandalam in 1930, reviving Kathakali and traditional arts.</li>
+                                <li>Received the Padma Bhushan in 1954 for contributions to literature and culture.</li>
+                                <li>Translated major Sanskrit epics, making them accessible to Malayalam readers.</li>
+                                <li>Inspired India’s freedom movement through patriotic poetry.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Legacy and Honors -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="legacy-heading" onclick="toggleContent('legacy')" role="button" aria-expanded="false" aria-controls="legacy">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content" aria-labelledby="legacy-heading">
+                            Vallathol Narayana Menon’s legacy endures through his transformative contributions to Malayalam literature and Kerala’s cultural heritage. His poetry and translations remain integral to literary studies, while Kerala Kalamandalam continues to thrive as a beacon of traditional arts. Honored with the Padma Bhushan, Vallathol is remembered as a poet-patriot who shaped Kerala’s cultural and nationalistic identity.
+                        </div>
+                    </section>
+                    <!-- Famous Quotes -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="quotes-heading" onclick="toggleContent('quotes')" role="button" aria-expanded="false" aria-controls="quotes">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content" aria-labelledby="quotes-heading">
+                            <div class="quote">“Poetry is the soul of a nation, breathing life into its culture.”</div>
+                            <div class="quote">“Kathakali is Kerala’s heartbeat, pulsing with our ancient stories.”</div>
+                            <div class="quote">“In every verse, I weave the dreams of a free India.”</div>
+                        </div>
+                    </section>
+                    <!-- Timeline of Important Events -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="timeline-heading" onclick="toggleContent('timeline')" role="button" aria-expanded="false" aria-controls="timeline">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content" aria-labelledby="timeline-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1878: Born in Chennara, Kerala.</li>
+                                <li>1916: Published <em>Sahityamanjari</em>, a landmark poetry collection.</li>
+                                <li>1928: Released <em>Chithrayogam</em>, a narrative poem.</li>
+                                <li>1930: Founded Kerala Kalamandalam to preserve Kathakali.</li>
+                                <li>1935: Published Malayalam translation of the Ramayana.</li>
+                                <li>1954: Awarded the Padma Bhushan by the Government of India.</li>
+                                <li>1958: Passed away, leaving a lasting legacy in literature and culture.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Personal Life and Family -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="personal-heading" onclick="toggleContent('personal')" role="button" aria-expanded="false" aria-controls="personal">Personal Life and Family</h3>
+                        <div id="personal" class="toggle-content" aria-labelledby="personal-heading">
+                            Vallathol Narayana Menon led a life dedicated to literature, culture, and social reform. Deeply rooted in Kerala’s traditions, he balanced his roles as a poet, translator, and cultural activist. Despite personal challenges, including hearing loss in later years, he remained committed to his work. His family supported his literary and cultural endeavors, though he maintained a private personal life focused on his contributions to Kerala.
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- Button Section -->
+        <div class="text-center mt-8 button-group">
+            <button class="read-aloud-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="readAloud()">Read Aloud</button>
+            <button class="stop-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="stopReading()" disabled>Stop</button>
+            <button class="resume-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="resumeReading()" disabled>Resume</button>
+            <button class="restart-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="restartReading()" disabled>Restart</button>
+            <a href="kerala.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        // Toggle content visibility
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const heading = document.querySelector(`[aria-controls="${sectionId}"]`);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+                document.querySelector(`[aria-controls="${el.id}"]`).setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Text-to-speech functionality
+        let utterance = null;
+        let isPaused = false;
+
+        function readAloud() {
+            if (utterance && !isPaused) {
+                window.speechSynthesis.cancel();
+            }
+            const content = document.querySelector('main').innerText;
+            utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'en-US';
+            utterance.rate = 1;
+            utterance.onend = () => {
+                resetButtons();
+            };
+            window.speechSynthesis.speak(utterance);
+            updateButtonStates(true);
+        }
+
+        function stopReading() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                updateButtonStates(true, true);
+            }
+        }
+
+        function resumeReading() {
+            if (utterance && isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                updateButtonStates(true);
+            }
+        }
+
+        function restartReading() {
+            window.speechSynthesis.cancel();
+            isPaused = false;
+            readAloud();
+        }
+
+        function updateButtonStates(isReading, isPaused = false) {
+            const readButton = document.querySelector('.read-aloud-button');
+            const stopButton = document.querySelector('.stop-button');
+            const resumeButton = document.querySelector('.resume-button');
+            const restartButton = document.querySelector('.restart-button');
+            readButton.disabled = isReading && !isPaused;
+            stopButton.disabled = !isReading || isPaused;
+            resumeButton.disabled = !isPaused;
+            restartButton.disabled = !isReading;
+        }
+
+        function resetButtons() {
+            isPaused = false;
+            utterance = null;
+            updateButtonStates(false);
+        }
+
+        // Stop speech on page unload or refresh
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            resetButtons();
+        });
+    </script>
+</body>
+</html>

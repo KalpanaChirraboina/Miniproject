@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamuna Bini - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Jamuna Bini, a renowned Telugu poet from Telangana, celebrated for her lyrical and feminist poetry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button, .read-aloud-button, .stop-button, .resume-button, .restart-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover, .read-aloud-button:hover, .stop-button:hover, .resume-button:hover, .restart-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+        .button-group button:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Jamuna Bini</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <aside class="w-full md:w-1/3 sidebar p-6" aria-labelledby="profile-heading">
+                <img src="ARP_Jamuna_Bini.jpg" alt="Jamuna Bini Photo" class="profile-img w-full mb-6">
+                <h2 id="profile-heading" class="font-semibold text-gray-800">Jamuna Bini</h2>
+                <p class="text-gray-600 mb-4 subtitle">Telugu Poet and Feminist Voice</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> July 5, 1938, Nalgonda</p>
+                    <p><strong>Died:</strong> March 15, 2012, Hyderabad</p>
+                    <p><strong>State:</strong> Telangana</p>
+                    <p><strong>Language:</strong> Telugu</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Andhra Mahila Sabha, Hyderabad</p>
+                    <p><strong>Occupation:</strong> Poet, Writer, Women’s Rights Activist</p>
+                    <p><strong>Notable Role:</strong> Pioneer of Feminist Telugu Poetry</p>
+                </div>
+            </aside>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <main class="w-full md:w-2/3 content-section" aria-labelledby="content-heading">
+                <h2 id="content-heading" class="sr-only">Jamuna Bini Profile Details</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Jamuna Bini was a distinguished Telugu poet and women’s rights activist from Telangana, celebrated for her evocative poetry that championed feminist themes and social equality. Born in Nalgonda, her works explored the experiences of women, challenging patriarchal norms with lyrical grace. Bini’s contributions to Telugu literature and her advocacy for gender justice left a lasting impact on the literary and social landscape.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <section class="mb-6" aria-labelledby="books-heading">
+                    <h3 id="books-heading" class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://archive.org/details/SwaraSastraKeyToCorrectBreathing1" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Stree Swara</a> (1965): A collection of feminist poems.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Nirbhaya-Kusum-Chopra/dp/9383572760" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Nirbhaya</a> (1978): Poems on women’s resilience.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Saundarya-Paperback-ProfoundWriters-Publication-Profound/dp/B0CQGK2RJK" target="_blank" class="text-blue-600 hover:underline" rel="noopener noreferrer">Saundarya</a> (1995): A compilation of her later works.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="early-life-heading" onclick="toggleContent('early-life')" role="button" aria-expanded="false" aria-controls="early-life">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content" aria-labelledby="early-life-heading">
+                            Jamuna Bini was born on July 5, 1938, in Nalgonda, Telangana, to a progressive family that valued education. Her mother was a teacher, inspiring her early interest in literature. She studied at Andhra Mahila Sabha in Hyderabad, where she was exposed to feminist ideas and began writing poetry that addressed women’s struggles and aspirations.
+                        </div>
+                    </section>
+                    <!-- Literary Career -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="literary-career-heading" onclick="toggleContent('literary-career')" role="button" aria-expanded="false" aria-controls="literary-career">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content" aria-labelledby="literary-career-heading">
+                            Jamuna Bini’s poetry introduced a bold feminist perspective to Telugu literature. Her debut collection, <em>Stree Swara</em> (1965), was a groundbreaking work that gave voice to women’s experiences. She published over 400 poems and contributed to feminist literary journals, influencing a new wave of women poets in Telangana.
+                        </div>
+                    </section>
+                    <!-- Social and Political Activism -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="activism-heading" onclick="toggleContent('activism')" role="button" aria-expanded="false" aria-controls="activism">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content" aria-labelledby="activism-heading">
+                            Bini was a passionate advocate for women’s rights, participating in feminist movements across Telangana. Her poetry served as a rallying cry against gender oppression, and she worked with women’s organizations to promote education and empowerment in rural communities.
+                        </div>
+                    </section>
+                    <!-- Selected Poems -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="selected-poems-heading" onclick="toggleContent('selected-poems')" role="button" aria-expanded="false" aria-controls="selected-poems">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content" aria-labelledby="selected-poems-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Stree Swara</em> (1965): A powerful feminist anthem.</li>
+                                <li><em>Nirbhaya</em> (1978): A poem celebrating women’s courage.</li>
+                                <li><em>Mouna Geetham</em> (1985): Reflections on inner strength.</li>
+                                <li><em>Adavi Pata</em> (1985): A song of freedom and resistance.</li>
+                                <li><em>Saundarya</em> (1995): A meditation on beauty and identity.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Major Achievements -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="achievements-heading" onclick="toggleContent('achievements')" role="button" aria-expanded="false" aria-controls="achievements">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content" aria-labelledby="achievements-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Andhra Pradesh Sahitya Akademi Award (1990).</li>
+                                <li>Pioneered feminist poetry in Telugu literature.</li>
+                                <li>Honored by women’s literary organizations for her activism.</li>
+                                <li>Published over 400 poems in literary journals.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Legacy and Honors -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="legacy-heading" onclick="toggleContent('legacy')" role="button" aria-expanded="false" aria-controls="legacy">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content" aria-labelledby="legacy-heading">
+                            Jamuna Bini’s poetry remains a cornerstone of feminist Telugu literature, inspiring generations of women writers and activists. Her works are celebrated in literary circles, and annual awards in her name recognize contributions to feminist poetry.
+                        </div>
+                    </section>
+                    <!-- Famous Quotes -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="quotes-heading" onclick="toggleContent('quotes')" role="button" aria-expanded="false" aria-controls="quotes">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content" aria-labelledby="quotes-heading">
+                            <div class="quote">“A woman’s voice is the echo of freedom.”</div>
+                            <div class="quote">“Poetry is the mirror of a woman’s soul.”</div>
+                            <div class="quote">“Break the chains, sing your song.”</div>
+                        </div>
+                    </section>
+                    <!-- Timeline of Important Events -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="timeline-heading" onclick="toggleContent('timeline')" role="button" aria-expanded="false" aria-controls="timeline">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content" aria-labelledby="timeline-heading">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1938: Born in Nalgonda, Telangana.</li>
+                                <li>1960: Published her first poem, <em>Adavi Pata</em>.</li>
+                                <li>1965: Released <em>Stree Swara</em>.</li>
+                                <li>1978: Published <em>Nirbhaya</em>.</li>
+                                <li>1985: Released <em>Mouna Geetham</em>.</li>
+                                <li>1990: Awarded the Andhra Pradesh Sahitya Akademi Award.</li>
+                                <li>1995: Published <em>Saundarya</em>.</li>
+                                <li>2012: Passed away in Hyderabad.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Personal Life and Children -->
+                    <section>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" id="personal-heading" onclick="toggleContent('personal')" role="button" aria-expanded="false" aria-controls="personal">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content" aria-labelledby="personal-heading">
+                            Jamuna Bini married Srinivas Rao in 1962 and had two daughters, Anjali and Priya. She balanced her literary career with her activism, living a life dedicated to empowering women through her words and actions.
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- Button Section -->
+        <div class="text-center mt-8 button-group">
+            <button class="read-aloud-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="readAloud()">Read Aloud</button>
+            <button class="stop-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="stopReading()" disabled>Stop</button>
+            <button class="resume-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="resumeReading()" disabled>Resume</button>
+            <button class="restart-button text-white px-6 py-3 rounded-lg font-semibold mr-4" onclick="restartReading()" disabled>Restart</button>
+            <a href="arunachalpradesh.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        // Toggle content visibility
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const heading = document.querySelector(`[aria-controls="${sectionId}"]`);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+                document.querySelector(`[aria-controls="${el.id}"]`).setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+                heading.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Text-to-speech functionality
+        let utterance = null;
+        let isPaused = false;
+
+        function readAloud() {
+            if (utterance && !isPaused) {
+                window.speechSynthesis.cancel();
+            }
+            const content = document.querySelector('main').innerText;
+            utterance = new SpeechSynthesisUtterance(content);
+            utterance.lang = 'en-US';
+            utterance.rate = 1;
+            utterance.onend = () => {
+                resetButtons();
+            };
+            window.speechSynthesis.speak(utterance);
+            updateButtonStates(true);
+        }
+
+        function stopReading() {
+            if (utterance) {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                updateButtonStates(true, true);
+            }
+        }
+
+        function resumeReading() {
+            if (utterance && isPaused) {
+                window.speechSynthesis.resume();
+                isPaused = false;
+                updateButtonStates(true);
+            }
+        }
+
+        function restartReading() {
+            window.speechSynthesis.cancel();
+            isPaused = false;
+            readAloud();
+        }
+
+        function updateButtonStates(isReading, isPaused = false) {
+            const readButton = document.querySelector('.read-aloud-button');
+            const stopButton = document.querySelector('.stop-button');
+            const resumeButton = document.querySelector('.resume-button');
+            const restartButton = document.querySelector('.restart-button');
+            readButton.disabled = isReading && !isPaused;
+            stopButton.disabled = !isReading || isPaused;
+            resumeButton.disabled = !isPaused;
+            restartButton.disabled = !isReading;
+        }
+
+        function resetButtons() {
+            isPaused = false;
+            utterance = null;
+            updateButtonStates(false);
+        }
+
+        // Stop speech on page unload or refresh
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+            resetButtons();
+        });
+    </script>
+</body>
+</html>

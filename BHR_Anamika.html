@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anamika - Poet Profile</title>
+    <meta name="description" content="Explore the life and works of Anamika, a celebrated contemporary Hindi poetess known for her feminist and lyrical poetry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Anamika</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="BHR_Anamika.jpg" alt="Anamika Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Anamika</h2>
+                <p class="text-gray-600 mb-4 subtitle">Contemporary Hindi Poetess</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> August 17, 1961, Muzaffarpur, Bihar</p>
+                    <p><strong>Died:</strong> Alive</p>
+                    <p><strong>State:</strong> Bihar</p>
+                    <p><strong>Language:</strong> Hindi</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Ph.D. in English Literature, University of Delhi</p>
+                    <p><strong>Occupation:</strong> Poet, Novelist, Critic, Academic</p>
+                    <p><strong>Notable Role:</strong> Leading Voice in Feminist Hindi Poetry</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Anamika is a prominent contemporary Hindi poetess, novelist, and critic, celebrated for her feminist perspective and lyrical finesse. Born in Muzaffarpur, Bihar, her poetry explores themes of gender, identity, and human relationships, blending traditional Hindi rhythms with modern sensibilities. A leading voice in Hindi literature, Anamika’s work resonates with readers for its emotional depth and intellectual rigor, earning her numerous accolades and a global readership.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Yogita-Yadav/dp/938791982X" target="_blank" class="https://www.amazon.in/s?k=anamika+books&crid=RMSTT66KQKGX&sprefix=anamika+books%2Caps%2C265&ref=nb_sb_noss_2">Galat Pate Ki Chitthi</a> (1984): Her debut poetry collection, exploring love and identity.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/-/hi/Anamika/dp/812672742X" target="_blank" class="text-blue-600 hover:underline">Tokri Mein Digant</a> (2005): A critically acclaimed poetry collection.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Anamika was born on August 17, 1961, in Muzaffarpur, Bihar, into a family that valued education and literature. She pursued her higher education at the University of Delhi, earning a Ph.D. in English Literature. Her academic background, combined with her exposure to Hindi literary traditions, shaped her unique poetic voice, which bridges classical and contemporary sensibilities.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Anamika’s literary career began with her debut poetry collection, <em>Galat Pate Ki Chitthi</em> (1984), which established her as a fresh voice in Hindi poetry. Her subsequent works, including <em>Tokri Mein Digant</em> (2005) and <em>Beech Bhawaron Mein</em> (1994), are celebrated for their feminist insights and lyrical beauty. She has also authored novels, essays, and translations, contributing to Hindi literature’s global reach. Her work is widely anthologized and translated into multiple languages.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content">
+                            Anamika’s poetry and prose are deeply engaged with feminist issues, advocating for women’s empowerment and challenging patriarchal norms. Her writings address social inequalities, gender-based violence, and the complexities of female identity, making her a prominent voice in India’s feminist literary movement. Through her academic and public engagements, she promotes dialogue on social justice and cultural inclusivity.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Galat Pate Ki Chitthi</em> (1984): A poem on misplaced love and longing.</li>
+                                <li><em>Tokri Mein Digant</em> (2005): A reflection on freedom and confinement.</li>
+                                <li><em>Beech Bhawaron Mein</em> (1994): A feminist exploration of inner turmoil.</li>
+                                <li><em>Stri Ka Ant</em> (2005): A poignant commentary on women’s struggles.</li>
+                                <li><em>Samay Ke Saath</em> (2010): A meditation on time and change.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Tokri Mein Digant</em> (2020).</li>
+                                <li>Honored with the Hindi Academy Shalaka Samman (2018).</li>
+                                <li>Awarded the Kedar Samman for contributions to Hindi poetry (2006).</li>
+                                <li>Recognized by the Bharatiya Bhasha Parishad for her literary work.</li>
+                                <li>Served as a professor and mentor, shaping Hindi literary studies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Anamika’s work continues to inspire readers and writers, particularly in feminist and Hindi literary circles. Her poetry is studied in universities, and her contributions to gender discourse have earned her a lasting place in contemporary Indian literature. Literary festivals and awards celebrate her legacy, and her translations ensure her voice reaches a global audience.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“A woman’s silence is not surrender; it is her strength brewing.”</div>
+                            <div class="quote">“Poetry is the language of the soul, unbound by chains.”</div>
+                            <div class="quote">“Every woman carries a universe within her, waiting to be heard.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1961: Born in Muzaffarpur, Bihar.</li>
+                                <li>1984: Published <em>Galat Pate Ki Chitthi</em>.</li>
+                                <li>1994: Released <em>Beech Bhawaron Mein</em>.</li>
+                                <li>2005: Published <em>Tokri Mein Digant</em>.</li>
+                                <li>2006: Received Kedar Samman.</li>
+                                <li>2012: Published <em>Dusra Banwas</em>.</li>
+                                <li>2018: Honored with Hindi Academy Shalaka Samman.</li>
+                                <li>2020: Awarded Sahitya Akademi Award.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Anamika maintains a private personal life, focusing public attention on her literary and academic work. She is married and has children, but details remain limited as she prioritizes her professional contributions. Her warmth and intellectual engagement have made her a respected figure among students, writers, and literary communities.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="bihar.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

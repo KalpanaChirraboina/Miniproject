@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akha Bhagat - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Akha Bhagat, a revered Gujarati poet known for his philosophical and devotional poetry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Akha Bhagat</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="GUJARAT_Akha_Bhagta.jpg" alt="Akha Bhagat Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Akha Bhagat</h2>
+                <p class="text-gray-600 mb-4 subtitle">Revered Gujarati Poet</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> 1615, Jetalpur</p>
+                    <p><strong>Died:</strong> 1674, Ahmedabad</p>
+                    <p><strong>State:</strong> Gujarat</p>
+                    <p><strong>Language:</strong> Gujarati</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> Self-educated, trained in Vedanta</p>
+                    <p><strong>Occupation:</strong> Poet, Philosopher</p>
+                    <p><strong>Notable Role:</strong> Devotional and Philosophical Poet</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Akha Bhagat, also known as Akho, was a 17th-century Gujarati poet and philosopher whose works are celebrated for their profound philosophical insights and devotional fervor. Rooted in the Bhakti and Vedanta traditions, his poetry critiqued social hypocrisy and explored themes of self-realization and divine love. His concise yet powerful verses, often in the form of chhappa and doha, continue to resonate in Gujarati literature.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.exoticindiaart.com/book/details/akhani-kavita-gujarati-haf183/?srsltid=AfmBOopO6UizX_0saxjTTVGj4x0xu3oWoxOWRJPDSEGJDKJ6O4IX9tNC" target="_blank" class="text-blue-600 hover:underline">Akha Ni Kavita</a>: A collection of his philosophical poems.</li>
+                            <li class="book-link"><a href="https://archive.org/details/in.ernet.dli.2015.318449" target="_blank" class="text-blue-600 hover:underline">Chhappa Sangrah</a>: A compilation of his six-line poems.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Ekantacha-Doha-Pravin-Davane/dp/8192706885" target="_blank" class="text-blue-600 hover:underline">Akha Na Doha</a>: A collection of his couplets.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Akha Bhagat was born in 1615 in Jetalpur, Gujarat, into a goldsmith family. Largely self-educated, he studied Vedanta and other philosophical texts, which shaped his spiritual outlook. His early life experiences, including personal tragedies, led him to embrace a life of poetry and philosophical inquiry, distancing himself from material pursuits.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Akha Bhagat’s literary career was marked by his unique blend of Bhakti devotion and Vedantic philosophy. His poems, written in chhappa (six-line stanzas) and doha (couplets), critiqued societal norms and religious hypocrisy while extolling self-realization and divine love. His works, preserved orally and later compiled, remain influential in Gujarati literature.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content">
+                            While not a political activist, Akha Bhagat’s poetry was inherently reformist, challenging caste rigidity, religious orthodoxy, and social hypocrisy. His verses advocated for inner purity and universal spirituality, subtly influencing social thought in 17th-century Gujarat by encouraging introspection and ethical living.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Chhappa on Maya</em>: A critique of worldly illusions.</li>
+                                <li><em>Doha on Atman</em>: A reflection on the eternal soul.</li>
+                                <li><em>Chhappa on Bhakti</em>: A celebration of divine love.</li>
+                                <li><em>Doha on Truth</em>: An exploration of universal truth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Pioneered the chhappa form in Gujarati poetry.</li>
+                                <li>Influenced Bhakti and Vedanta traditions through his works.</li>
+                                <li>His poetry remains a cornerstone of Gujarati literary heritage.</li>
+                                <li>Recognized as a spiritual guide in Gujarat’s cultural history.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Akha Bhagat’s poetry continues to inspire Gujarati literature and spiritual thought. His works are recited in cultural gatherings and studied for their philosophical depth. His legacy is honored through literary festivals and publications that preserve his contributions to Gujarati poetry.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“The world is but a dream; the soul alone is real.”</div>
+                            <div class="quote">“Truth lies within, not in the rituals of men.”</div>
+                            <div class="quote">“Love the divine, and the heart finds eternal peace.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1615: Born in Jetalpur, Gujarat.</li>
+                                <li>1640s: Began composing philosophical poetry.</li>
+                                <li>1650s: Gained recognition in Gujarat’s literary circles.</li>
+                                <li>1674: Passed away in Ahmedabad.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Little is documented about Akha Bhagat’s personal life, as he led a spiritually ascetic existence. He is believed to have remained unmarried, dedicating his life to poetry and philosophical inquiry. His legacy is primarily literary, with no records of children or family life.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="gujarat.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

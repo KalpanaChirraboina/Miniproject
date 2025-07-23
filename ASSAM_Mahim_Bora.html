@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahim Bora - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Mahim Bora, a celebrated Assamese poet and short story writer, known for his lyrical and evocative contributions to Assamese literature.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Mahim Bora</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="ASSAM_Mahim_Bora.jpg" alt="Mahim Bora Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Mahim Bora</h2>
+                <p class="text-gray-600 mb-4 subtitle">Celebrated Assamese Poet</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> July 6, 1924, Nagaon, Assam</p>
+                    <p><strong>Died:</strong> August 5, 2016, Guwahati, Assam</p>
+                    <p><strong>State:</strong> Assam</p>
+                    <p><strong>Language:</strong> Assamese</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> M.A. in Assamese Literature, Gauhati University</p>
+                    <p><strong>Occupation:</strong> Poet, Short Story Writer, Critic, Educator</p>
+                    <p><strong>Notable Role:</strong> Pioneer of Modern Assamese Poetry</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Mahim Bora was a distinguished Assamese poet, short story writer, and critic whose lyrical and evocative works enriched modern Assamese literature. Born in Nagaon, Assam, his poetry captured the beauty of nature, human emotions, and social realities with profound sensitivity. Known for blending traditional Assamese ethos with modernist themes, Bora’s contributions earned him widespread acclaim as a literary icon.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="http://sgc-opac.koha.co.in/cgi-bin/koha/opac-detail.pl?biblionumber=25494" target="_blank" class="text-blue-600 hover:underline">Rati Phula Phul</a> (1962): A celebrated poetry collection reflecting nature and emotions.</li>
+                            <li class="book-link"><a href="https://www.goodreads.com/book/show/54923257-edhani-mahir-hanhi" target="_blank" class="text-blue-600 hover:underline">Edhani Mahir Hahi</a> (1977): A collection of poignant short stories.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Kathanibari-Ghat-Mahim-Bora-Mohim/dp/B0CH8197P4" target="_blank" class="text-blue-600 hover:underline">Kathanibari Ghat</a> (1985): A compilation of reflective poems and prose.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Mahim Bora was born on July 6, 1924, in Nagaon, Assam, to a family with deep cultural roots. His early exposure to Assamese folk traditions and literature shaped his creative outlook. He pursued higher education at Gauhati University, earning an M.A. in Assamese Literature. His academic background and love for his native language laid the foundation for his illustrious literary career.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Mahim Bora’s literary career spanned poetry, short stories, and literary criticism, significantly shaping modern Assamese literature. His debut poetry collection, <em>Rati Phula Phul</em> (1962), established him as a leading voice in Assamese poetry. Known for his vivid imagery and emotional depth, Bora’s works explored themes of nature, love, and social change. He also edited literary journals and mentored young writers, leaving a lasting impact on the Assamese literary scene.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Cultural Contributions</h3>
+                        <div id="activism" class="toggle-content">
+                            While not overtly political, Mahim Bora’s works reflected a deep concern for social issues, including rural life and cultural preservation. He actively participated in literary organizations like the Asam Sahitya Sabha, promoting Assamese language and culture. His writings often highlighted the struggles of common people, fostering a sense of empathy and cultural pride among readers.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>Rati Phula Phul</em> (1962): A lyrical ode to nature and human emotions.</li>
+                                <li><em>Chhaya</em> (1970): A reflective poem on life’s transience.</li>
+                                <li><em>Bihu</em> (1980): Celebrating Assam’s cultural festival.</li>
+                                <li><em>Monor Pakhi</em> (1985): A metaphor for freedom and dreams.</li>
+                                <li><em>Xarot Xarotor Gaan</em> (1990): A song of autumn’s beauty.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Received the Sahitya Akademi Award for <em>Edhani Mahir Hahi</em> (2001).</li>
+                                <li>Awarded the Assam Valley Literary Award (1998).</li>
+                                <li>Honored with the Padma Shri by the Government of India (2011).</li>
+                                <li>Recognized by the Asam Sahitya Sabha with the Bishnu Rabha Award.</li>
+                                <li>Contributed significantly to Assamese short story and poetry genres.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Mahim Bora’s legacy endures through his timeless poetry and stories, which continue to inspire Assamese literature. His works are studied in academic curricula, and literary awards in his name celebrate his contributions. The Mahim Bora Memorial Award recognizes emerging Assamese writers, ensuring his influence persists.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“Poetry is the fragrance of the soul, blooming in words.”</div>
+                            <div class="quote">“Nature speaks to those who listen with their hearts.”</div>
+                            <div class="quote">“In every leaf, there is a story of life.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1924: Born in Nagaon, Assam.</li>
+                                <li>1962: Published <em>Rati Phula Phul</em>.</li>
+                                <li>1977: Released <em>Edhani Mahir Hahi</em>.</li>
+                                <li>1998: Received the Assam Valley Literary Award.</li>
+                                <li>2001: Awarded the Sahitya Akademi Award.</li>
+                                <li>2011: Honored with the Padma Shri.</li>
+                                <li>2016: Passed away in Guwahati, Assam.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Mahim Bora married Pushpalata Bora and had three children: two daughters and one son. A dedicated educator, he taught at various colleges in Assam while pursuing his literary career. Known for his simplicity and humility, Bora remained deeply connected to his Assamese roots throughout his life.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="assam.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

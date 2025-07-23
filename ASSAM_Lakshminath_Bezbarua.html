@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshminath Bezbarua - Poet Profile</title>
+    <meta name="description" content="Discover the life and works of Lakshminath Bezbarua, a pioneering Assamese poet, playwright, and novelist, celebrated for his contributions to Assamese literature and cultural identity.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #f3f4f6, #d1d5db);
+            margin: 0;
+        }
+        .container {
+            position: relative;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .sidebar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .content-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+        .profile-img {
+            max-height: 300px;
+            object-fit: contain;
+            border: 6px solid #e5e7eb;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        .toggle-content {
+            display: none;
+            margin-top: 0.5rem;
+            padding: 1.25rem;
+            background: #f9fafb;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            animation: fadeIn 0.4s ease-in;
+        }
+        .toggle-content.active {
+            display: block;
+        }
+        .toggle-heading {
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            padding: 0.75rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem !important;
+        }
+        .toggle-heading:hover {
+            color: #1d4ed8;
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+        .toggle-heading::before {
+            content: '✨';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+            color: #4b5563;
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .books-header {
+            color: #0f766e;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .books-header::before {
+            content: '📚';
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .book-link {
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .book-link:hover {
+            color: #1d4ed8;
+            transform: translateX(3px);
+        }
+        .book-link::before {
+            content: '🔗';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+        .section-divider {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        .back-button {
+            background: linear-gradient(to right, #1d4ed8, #3b82f6);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-button:hover {
+            background: linear-gradient(to right, #1e40af, #2563eb);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .main-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .main-header-title::after {
+            content: none;
+        }
+        .section-header-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+        .section-header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 3px;
+            background: #000000;
+            border-radius: 0;
+            transform: translateX(calc(-50vw + 50%));
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sidebar h2 {
+            font-size: 2.25rem;
+        }
+        .sidebar .subtitle {
+            font-size: 1.125rem;
+        }
+        .sidebar-details p {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 main-header-title">Lakshminath Bezbarua</h1>
+        </header>
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar: Photo and Basic Details -->
+            <div class="w-full md:w-1/3 sidebar p-6">
+                <img src="ASSAM_Lakshminath_Bezbarua.jpg" alt="Lakshminath Bezbarua Photo" class="profile-img w-full mb-6">
+                <h2 class="font-semibold text-gray-800">Lakshminath Bezbarua</h2>
+                <p class="text-gray-600 mb-4 subtitle">Assamese Poet, Playwright, and Novelist</p>
+                <div class="space-y-2 text-gray-700 sidebar-details">
+                    <p><strong>Born:</strong> November 14, 1864, Ahatguri, Assam</p>
+                    <p><strong>Died:</strong> April 26, 1938, Dibrugarh, Assam</p>
+                    <p><strong>State:</strong> Assam</p>
+                    <p><strong>Language:</strong> Assamese</p>
+                    <p><strong>Nationality:</strong> Indian</p>
+                    <p><strong>Education:</strong> City College, Calcutta</p>
+                    <p><strong>Occupation:</strong> Poet, Writer, Dramatist, Editor</p>
+                    <p><strong>Notable Role:</strong> Pioneer of Modern Assamese Literature</p>
+                </div>
+            </div>
+            <!-- Right Content: Intro and Collapsible Sections -->
+            <div class="w-full md:w-2/3 content-section">
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Lakshminath Bezbarua was a towering figure in Assamese literature, often referred to as the "Sahityarathi" (Charioteer of Literature). Born in Ahatguri, Assam, he played a pivotal role in shaping modern Assamese literature through his poetry, plays, novels, and essays. His works celebrated Assamese culture, folklore, and identity, fostering a sense of nationalism during the colonial era. Bezbarua’s contributions remain foundational to Assamese literary heritage.
+                </p>
+                <hr class="section-divider">
+                <!-- Books and Publications (Separate Header) -->
+                <div class="mb-6">
+                    <h3 class="books-header">Books and Publications</h3>
+                    <div class="text-gray-600">
+                        <ul class="list-none space-y-3">
+                            <li class="book-link"><a href="https://www.goodreads.com/book/show/17880812-kadam-kali" target="_blank" class="text-blue-600 hover:underline">Kadam Kali</a> (1903): A collection of poems celebrating Assamese culture.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Podum-Kunwori-Assamese-Lakshminath-Bezbaroa/dp/1717459420" target="_blank" class="text-blue-600 hover:underline">Padum Kunwori</a> (1910): A historical novel.</li>
+                            <li class="book-link"><a href="https://www.amazon.in/Burhi-Sadhu-Assamese-Folklore-Combo/dp/B0BM5YVJ54/ref=sr_1_1?dib=eyJ2IjoiMSJ9.iwAoIAmIBS_tBQNkEVrm3rRcs2a9tZlM1vpfbMHVmPSr3yYiwauIOrqE83ZFUyx_n7qBpsibTBR5VzKHvGQ4kQQqTQhRR-H5yW6UIoSQ-8ODsMKDcbwisZ78IfBuICTdzHqI5bq95AcT85AKXQw6Xnvuu4nBTU7I7qFo1ynXKiA.uVSHfpW9bs0xU70GhEi7y5O4t2lTRIZavqtT_YDUkBM&dib_tag=se&keywords=burhi+aair+xadhu+assamese&qid=1750787097&sr=8-1" target="_blank" class="text-blue-600 hover:underline">Burhi Aair Sadhu</a> (1912): A compilation of Assamese folktales.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="section-divider">
+                <div class="space-y-4">
+                    <!-- Early Life and Education -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('early-life')">Early Life and Education</h3>
+                        <div id="early-life" class="toggle-content">
+                            Lakshminath Bezbarua was born on November 14, 1864, in Ahatguri, Assam, to a prominent family. His father, Dinanath Bezbarua, was a civil servant. Exposed to Assamese folklore and literature from a young age, he studied at Sibsagar Government High School and later at City College, Calcutta, where he developed a deep interest in literary pursuits and cultural nationalism.
+                        </div>
+                    </div>
+                    <!-- Literary Career -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('literary-career')">Literary Career</h3>
+                        <div id="literary-career" class="toggle-content">
+                            Bezbarua’s literary career revolutionized Assamese literature by introducing modern forms of poetry, prose, and drama. His poetry collection, <em>Kadam Kali</em> (1903), celebrated Assamese identity, while his novel <em>Padum Kunwari</em> (1910) explored historical themes. As editor of the magazine <em>Jonaki</em>, he nurtured a new generation of Assamese writers, laying the foundation for the modern Assamese literary movement.
+                        </div>
+                    </div>
+                    <!-- Social and Political Activism -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('activism')">Social and Political Activism</h3>
+                        <div id="activism" class="toggle-content">
+                            Bezbarua was a fervent advocate for Assamese cultural and national identity during the British colonial period. Through his writings, he promoted unity and pride in Assamese heritage, resisting cultural assimilation. He was involved in social reform movements and supported the preservation of Assamese language and traditions.
+                        </div>
+                    </div>
+                    <!-- Selected Poems -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('selected-poems')">Selected Poems</h3>
+                        <div id="selected-poems" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><em>O’ Mor Aponar Desh</em> (1912): A patriotic anthem celebrating Assam.</li>
+                                <li><em>Bina Borah</em> (1903): A lyrical poem from <em>Kadam Kali</em>.</li>
+                                <li><em>Assam Sangeet</em> (1910): A tribute to Assamese culture.</li>
+                                <li><em>Kangalor Kotha</em> (1903): A poem on social struggles.</li>
+                                <li><em>Phoolor Phul</em> (1912): A reflective poem on nature and life.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Major Achievements -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('achievements')">Major Achievements</h3>
+                        <div id="achievements" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Pioneered modern Assamese literature through diverse literary forms.</li>
+                                <li>Edited <em>Jonaki</em> magazine, fostering Assamese literary growth.</li>
+                                <li>Authored the iconic patriotic song <em>O’ Mor Aponar Desh</em>.</li>
+                                <li>Preserved Assamese folklore through <em>Burhi Aair Sadhu</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Legacy and Honors -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('legacy')">Legacy and Honors</h3>
+                        <div id="legacy" class="toggle-content">
+                            Lakshminath Bezbarua’s works continue to inspire Assamese literature and cultural identity. His contributions are celebrated through literary awards and festivals in his name. The Sahityarathi title and posthumous recognition reflect his enduring impact on Assam’s cultural heritage.
+                        </div>
+                    </div>
+                    <!-- Famous Quotes -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('quotes')">Famous Quotes</h3>
+                        <div id="quotes" class="toggle-content">
+                            <div class="quote">“O’ my beloved land, you are the song of my heart.”</div>
+                            <div class="quote">“Literature is the soul of a nation’s identity.”</div>
+                            <div class="quote">“In every tale of the old, lies the wisdom of the new.”</div>
+                        </div>
+                    </div>
+                    <!-- Timeline of Important Events -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('timeline')">Timeline of Important Events</h3>
+                        <div id="timeline" class="toggle-content">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>1864: Born in Ahatguri, Assam.</li>
+                                <li>1889: Co-founded <em>Jonaki</em> magazine.</li>
+                                <li>1903: Published <em>Kadam Kali</em>.</li>
+                                <li>1910: Released <em>Padum Kunwari</em>.</li>
+                                <li>1912: Published <em>Burhi Aair Sadhu</em>.</li>
+                                <li>1922: Released <em>Jonbai</em>.</li>
+                                <li>1938: Passed away in Dibrugarh, Assam.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Personal Life and Children -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 toggle-heading" onclick="toggleContent('personal')">Personal Life and Children</h3>
+                        <div id="personal" class="toggle-content">
+                            Lakshminath Bezbarua married Pragyasundari Devi in 1892, and they had three children: two daughters, Aruna and Kamala, and one son, Hemanta. Despite his literary and social commitments, he remained deeply connected to his family and Assamese roots.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Back to Poets List Button -->
+        <div class="text-center mt-8">
+            <a href="assam.html" class="inline-block back-button text-white px-6 py-3 rounded-lg font-semibold">Back to Poets</a>
+        </div>
+    </div>
+    <script>
+        function toggleContent(sectionId) {
+            const content = document.getElementById(sectionId);
+            const isActive = content.classList.contains('active');
+            document.querySelectorAll('.toggle-content').forEach((el) => {
+                el.classList.remove('active');
+            });
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

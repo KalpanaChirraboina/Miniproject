@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books of Poets</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .bg-primary { background-color: #cc7722; }
+    .text-primary { color: #cc7722; }
+    .hover\:text-primary:hover { color: #cc7722; }
+    .hover\:bg-primary:hover { background-color: #b35c00; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #ffffff, #f4b7c1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin: 40px 0 20px;
+    }
+    .books-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .book {
+      text-align: center;
+      width: 250px;
+      padding: 15px;
+      background-color: #f5e6f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .book img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .book p {
+      margin: 5px 0;
+      color: #333;
+    }
+    .book-name {
+      font-weight: bold;
+    }
+    .book-price {
+      color: #2e7d32;
+    }
+    .book-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .book-buttons a {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      background-color: #2196f3;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .book-buttons a:hover {
+      background-color: #1976d2;
+    }
+    #vrModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: 1000;
+    }
+    .vr-scene {
+      width: 100%;
+      height: 100%;
+    }
+    #exitVR {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold text-primary">Soul of Indian Literature</h1>
+      <nav class="flex space-x-6 items-center">
+        <a href="home_page.html" class="flex items-center gap-1 hover:text-primary font-medium">
+          🏠 Home
+        </a>
+        <a href="library.html" class="flex items-center gap-1 hover:text-primary font-medium">
+          📚 Library
+        </a>
+        <a href="map.html" class="flex items-center gap-1 hover:text-primary font-medium">
+          🗺️ Map
+        </a>
+        <a href="/poets_corner" class="flex items-center gap-1 hover:text-primary font-medium">
+          ✍️ Poets Corner
+        </a>
+        <a href="search.html" class="flex items-center gap-1 hover:text-primary font-medium">
+          🔍 Search
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex flex-col items-center justify-center flex-1 px-4 text-center">
+    <h1>Books of Poets</h1>
+    <div class="books-container">
+      <script>
+        const books = [
+          { img: "sarojini_book1.jpg", title: "The Golden Threshold", price: "190", id: "golden", link: "https://www.amazon.in/Golden-Threshold-Sarojini-Naidu/dp/8121292204" },
+          { img: "gitanjali.jpg", title: "Gitanjali", price: "90", id: "gitanjali", link: "https://www.amazon.in/Gitanjali-Rabindranath-Tagore/dp/8171676766" },
+          { img: "the_god_of_things.jpg", title: "The God of Small Things", price: "290", id: "godofthings", link: "https://www.amazon.in/God-Small-Things-Booker-Winner/dp/014302857X" },
+          { img: "ramcharithmanas.jpg", title: "Ramcharitmanas", price: "415", id: "ramcharitmanas", link: "https://www.amazon.in/Charitmanas-Ramcharitmanas-Tulsidas-Code-81-Hardcover/dp/B097JNH98W" },
+          { img: "seditious_heart.jpg", title: "My Seditious Heart", price: "3325", id: "seditious", link: "https://www.amazon.in/My-Seditious-Heart-Arundhati-Roy/dp/1608466736" },
+          { img: "viswambara.jpg", title: "Viswambhara", price: "80", id: "viswambara", link: "https://www.amazon.in/Viswambhara-Dr-C-Narayana-Reddy/dp/B00HWWID2G" },
+          { img: "the_broken.jpg", title: "The Broken Wing", price: "1645", id: "brokenwing", link: "https://www.amazon.in/Broken-Wing-1915-1916-Contemporary-Sturgeon/dp/1528716620" },
+           { img: "panchali_cover.jpg", title: "Panchali Sabatham", price: "817", id: "panchali", link: "https://www.amazon.in/Panchali-Sapatham-Subramania-Bharathi/dp/1977931529" },
+            { img: "jathika_cover.jpeg", title: "Jathika Thotilla", price: "45", id: "jathika", link: "https://archive.org/details/20211231_20211231_0606" },
+             { img: "bathem_cover.jpg", title: "Bathem men Bhugol", price: "215", id: "bathem", link: "https://archive.org/details/in.ernet.dli.2015.443596" },
+              { img: "Adhwate_cover.jpeg", title: "Adhwate", price: "320", id: "adhwate", link: "https://archive.org/details/Adhwate" },
+               { img: "indumati_cover.jpg", title: "Indumati", price: "290", id: "indumati", link: "https://archive.org/details/indumati-1940" },
+                { img: "jibana_book.jpeg", title: "Jibana Sangitha", price: "250", id: "jibana", link: "https://archive.org/details/jibana-chita-1947" },
+                 
+          
+        ];
+
+        document.write(books.map(book => `
+          <div class="book">
+            <img src="${book.img}" alt="${book.title}" onclick="openVR('${book.img}')">
+            <p class="book-name">${book.title}</p>
+            <p class="book-price">Rs.${book.price}/-</p>
+            <div class="book-buttons">
+              <a href="read.html?book=${book.id}" class="read-btn">📖 Read</a>
+              <a href="${book.link}" class="buy-btn">🛒 Buy</a>
+            </div>
+          </div>
+        `).join(''));
+      </script>
+    </div>
+  </main>
+
+  <!-- VR Modal -->
+  <div id="vrModal">
+    <a-scene embedded class="vr-scene">
+      <a-assets timeout="10000">
+        <img id="bookTexture" src="">
+      </a-assets>
+      <a-plane id="bookPlane" position="0 1.6 -3" width="2" height="3" material="src: #bookTexture; side: double; npot: true" data-raycastable></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-camera>
+        <a-cursor raycaster="objects: [data-raycastable]"></a-cursor>
+      </a-camera>
+    </a-scene>
+    <button id="exitVR" onclick="closeVR()">Exit VR</button>
+  </div>
+
+  <script>
+    function openVR(imageSrc) {
+      const modal = document.getElementById('vrModal');
+      const bookTexture = document.getElementById('bookTexture');
+      const bookPlane = document.getElementById('bookPlane');
+      bookTexture.setAttribute('src', imageSrc);
+      const img = new Image();
+      img.src = imageSrc;
+      img.onload = () => {
+        bookPlane.setAttribute('material', 'src: #bookTexture; side: double; npot: true');
+        modal.style.display = 'block';
+        const scene = document.querySelector('a-scene');
+        scene.addEventListener('loaded', () => {
+          if (AFRAME.utils.device.isMobile() && scene.hasWebXR) {
+            scene.enterVR();
+          }
+        });
+      };
+      img.onerror = () => {
+        alert('Failed to load book cover image.');
+      };
+    }
+
+    function closeVR() {
+      const modal = document.getElementById('vrModal');
+      modal.style.display = 'none';
+      const scene = document.querySelector('a-scene');
+      if (scene.is('vr-mode')) {
+        scene.exitVR();
+      }
+    }
+  </script>
+
+</body>
+</html>
